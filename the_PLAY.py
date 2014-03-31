@@ -1,5 +1,6 @@
 import gameapi
 import apiVar
+import time
 
 import SceneManager
 import LoadingScene
@@ -10,20 +11,26 @@ class the_PLAY:
 
     def main(self):
         gameapi.init()
-        fpsClock = gameapi.time.Clock()
 
         mainWindow = gameapi.display.set_mode((640, 480))
+        gameapi.display.set_caption('the_PLAY')
         sceneManager = SceneManager.SceneManager(LoadingScene.LoadingScene, mainWindow)
 
         while True:
-            currentScene = sceneManager.getScene()
+            startTime = time.time()
             
+            currentScene = sceneManager.getScene()
+
+            currentScene.timeEvent(startTime)
             for event in gameapi.event.get():
                 currentScene.event(event)
 
             currentScene.draw()
             gameapi.display.update()
-            fpsClock.tick(30)
+
+            
+            endTime = time.time()
+            print("%.2f fps"%(1/(endTime-startTime)))
 
 
 

@@ -25,3 +25,6 @@ class Scene:
             sys.exit()
             
         self.mainView.event(event)
+
+    def timeEvent(self, time):
+        self.mainView.event(time)

@@ -28,7 +28,13 @@ class View:
             child.event(eventObj)
             
         self.onEvent(eventObj)
-        
+
+    def timeEvent(self, time):
+        for child in self.childList:
+            child.event(time)
+            
+        self.onTimeEvent(time)
+    
 
     def onInit(self):
         pass
@@ -37,4 +43,7 @@ class View:
         pass
 
     def onEvent(self, eventObj):
+        pass
+
+    def onTimeEvent(self, time):
         pass
