@@ -4,6 +4,7 @@ import time
 
 import SceneManager
 import LoadingScene
+from GameScene import GameScene
 
 class the_PLAY:
     def __init__(self):
@@ -14,7 +15,7 @@ class the_PLAY:
 
         mainWindow = gameapi.display.set_mode((640, 480))
         gameapi.display.set_caption('the_PLAY')
-        sceneManager = SceneManager.SceneManager(LoadingScene.LoadingScene, mainWindow)
+        sceneManager = SceneManager.SceneManager(GameScene, mainWindow)
 
         while True:
             startTime = time.time()
@@ -31,11 +32,6 @@ class the_PLAY:
             
             endTime = time.time()
             print("%.2f fps"%(1/(endTime-startTime)))
-
-
-
-
-
 
 
 
