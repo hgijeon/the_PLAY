@@ -4,24 +4,25 @@ import apiVar
 from RefVector import RefVector
 
 class View:
-    def __init__(self, scene, parentView, offsetRefVec = RefVector()):
+    def __init__(self, scene, parentView, wh, offsetRefVec = RefVector()):
         self.childList = []
         
         self.scene = scene
         self.parentView = parentView
         self.offsetRefVec = offsetRefVec
+        self.surface = gameapi.Surface(wh, apiVar.SRCALPHA)
 
         self.onInit()
         
 
     def draw(self, refVec = RefVector()):
-        self.absRefVec = refVec + self.offsetRefVec
-        gameapi.refVec = self.absRefVec
-
+        absRefVec = refVec + self.offsetRefVec
+        self.surface.fill((0,0,0,0))
         self.onDraw()
+        self.scene.window.blit(self.surface, absRefVec.lt)
         
         for child in self.childList:
-            child.draw(self.absRefVec)
+            child.draw(absRefVec)
 
     def event(self, eventObj):
         for child in self.childList:

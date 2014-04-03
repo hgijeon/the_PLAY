@@ -1,8 +1,10 @@
 class RefVector:
-    def __init__(self, x = 0, y = 0, rad = 0):
-        self.x = x
-        self.y = y
+    def __init__(self, left = 0, top = 0, rad = 0):
+        self.top = top
+        self.left = left
         self.rad = rad
 
+        self.lt = (left, top)
+
     def __add__(self, right):
-        return RefVector(self.x+right.x, self.y+right.y, self.rad+right.rad)
+        return RefVector(self.left+right.left, self.top+right.top, self.rad+right.rad)
