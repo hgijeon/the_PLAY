@@ -7,6 +7,4 @@ class ScoreView(View):
         
         
     def onDraw(self):
-        window = self.scene.window
-
-        gameapi.draw.rect(window, self.black, (0, 0, 150, 100))
+        self.drawRect(self.black, (0, 0, 150, 100))

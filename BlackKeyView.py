@@ -7,6 +7,4 @@ class BlackKeyView(View):
         self.keyColor = gameapi.Color(200,200,200)
 
     def onDraw(self):
-        surface = self.surface
-
-        gameapi.draw.rect(surface, self.keyColor, (0, 0, width, 150))
+        self.drawRect(self.keyColor, (0, 0, width, 150))

@@ -26,5 +26,5 @@ class Scene:
             
         self.mainView.event(event)
 
-    def timeEvent(self, time):
-        self.mainView.event(time)
+    def updateTime(self, time):
+        self.mainView.updateTime(time)

@@ -30,12 +30,14 @@ class View:
             
         self.onEvent(eventObj)
 
-    def timeEvent(self, time):
+    def updateTime(self, time):
         for child in self.childList:
-            child.event(time)
+            child.updateTime(time)
             
-        self.onTimeEvent(time)
-    
+        self.onUpdateTime(time)
+
+    def drawRect(self, color, rect):
+        gameapi.draw.rect(self.surface, color, rect)
 
     def onInit(self):
         pass
@@ -46,5 +48,5 @@ class View:
     def onEvent(self, eventObj):
         pass
 
-    def onTimeEvent(self, time):
+    def onUpdateTime(self, time):
         pass

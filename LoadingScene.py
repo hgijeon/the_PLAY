@@ -8,4 +8,4 @@ class LoadingScene(Scene):
         pass
     
     def initMainView(self):
-        self.mainView = LoadingScreenView(self, None)
+        self.mainView = LoadingScreenView(self, None, (1000, 1000))

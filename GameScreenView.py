@@ -13,6 +13,5 @@ class GameScreenView(View):
         
     def onDraw(self):
         surface = self.surface
-
         surface.fill(self.red)
-        gameapi.draw.rect(surface, self.red, (20, 40, 100, 300))
+

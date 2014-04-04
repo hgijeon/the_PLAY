@@ -1,0 +1,245 @@
+
+class the_PLAY:
+    def __init__():
+        self.main()
+
+    def main():
+        initialize game api
+        initialize window
+
+        sceneManager = SceneManager with Loading Scene
+
+        while True:
+            currentScene = sceneManager.getScene()
+
+            currentScene.update(time)
+            for event in gameapi.event.get():
+                currentScene.event(event)
+
+            currentScene.draw()
+            gameapi.display.update()
+
+            
+
+
+
+
+
+
+
+
+
+class SceneManager:
+    startWindow: window
+    sceneStack = [startSceneClass(self, window)]
+
+    def startWith(startScene):
+        self.sceneStack = [startScene]
+
+    def pushScene(scene):
+        self.sceneStack.push(scene)
+
+    def popScene():
+        return self.sceneStack.pop()
+
+    def setScene(scene):
+        self.sceneStack[-1] = scene
+
+    def getScene():
+        return self.sceneStack[-1]
+
+
+
+
+
+
+
+
+class Scene:
+    sceneManager: SceneManager
+    window: window
+    mainView: View
+
+
+    def draw(self):
+        self.mainView.draw()
+
+    def event(self, event):
+        self.mainView.event(event)
+
+    def updateTime(self, time):
+        self.mainView.updateTime(time)
+
+
+
+
+
+
+
+
+class View:
+    def __init__(scene, parentView, width_and_hight, offsetRefVec = RefVector()):
+        self.childList = []
+        
+        self.scene = scene
+        self.parentView = parentView
+        self.offsetRefVec = offsetRefVec
+        self.surface = gameapi.Surface(w_and_h)
+
+        self.onInit()
+        
+
+    def draw(refVec = RefVector()):
+        absRefVec = refVec + self.offsetRefVec
+
+        initialize surface
+
+        onDraw()
+        draw surface on window
+        
+        for child in self.childList:
+            child.draw(absRefVec)
+
+    def event(eventObj):
+        for child in self.childList:
+            child.event(eventObj)
+            
+        onEvent(eventObj)
+
+    def updateTime(time):
+        for child in self.childList:
+            child.updateTime(time)
+            
+        onUpdateTime(time)
+
+    def drawRect(color, (top, left, width, height)):
+        gameapi.draw.rect(color, (top, left, width, height))
+
+    def onInit(): implement in child class (optional)
+    def onDraw():
+    def onEvent(eventObj):
+    def onUpdateTime(time):
+
+
+
+
+
+
+
+
+class RefVector:
+    top: float
+    left: float
+    rad: float
+    leftTop = (left, top)
+
+    def __add__(self, right):
+        return new RefVector with added values
+
+
+
+
+
+
+
+
+
+class LoadingScene(Scene):
+    mainView = LoadingScreenView
+
+
+
+
+
+
+class LoadingScreenView(View):
+    loadingChecker: LoadingChecker
+
+    def onDraw():
+        draw Loading Images
+
+    def onUpdateTime(time):
+        if loadingChecker.isDone():
+            sceneManager.changeScene()
+
+
+
+
+
+class LoadingChecker(Middle):
+    def isDone():
+        check whether loading process finished
+
+
+
+
+
+
+class GameScene(Scene):
+    mainView = GameScreenView
+
+
+
+
+
+class GameScreenView(View):
+    def onInit():
+        self.childList.append(PianoView)
+        self.childList.append(ScoreView)
+        
+        
+    def onDraw():
+        fill back ground
+
+
+
+
+class ScoreView(View):
+    def onDraw():
+        draw screen board
+
+
+
+
+
+class PianoView(View):
+    def onInit(self):
+        self.childList += self.createOneOctaveView()
+        
+    def onDraw():
+        draw piano back grond image
+
+    def createOneOctaveView():
+        whiteKeys = 7 white keys with class WhiteKeyView
+        blackKeys = 5 black keys with class WhiteKeyView
+
+        return whiteKeys + blackKeys
+
+    def onUpdateTime(time):
+        communicate with midiParserManager and update status
+
+
+
+
+
+
+
+class BlackKeyView(View):
+    def onDraw(self):
+        draw black key
+        draw game note if needed
+
+    def onUpdateTime(time):
+        communicate with midiManager, create game note
+
+
+
+class WhiteKeyView(View):
+    def onDraw(self):
+        draw white key
+        draw game note if needed
+
+    def onUpdateTime(time):
+        communicate with midiManager, create game note
+
+

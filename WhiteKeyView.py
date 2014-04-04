@@ -7,6 +7,4 @@ class WhiteKeyView(View):
         self.keyColor = gameapi.Color(128,128,128)
 
     def onDraw(self):
-        surface = self.surface
-
-        gameapi.draw.rect(surface, self.keyColor, (5, 0, width-10, 300))
+        self.drawRect(self.keyColor, (5, 0, width-10, 300))

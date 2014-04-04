@@ -9,9 +9,7 @@ class PianoView(View):
         self.childList += self.createOneOctaveView((0,0))
         
     def onDraw(self):
-        surface = self.surface
-
-        gameapi.draw.rect(surface, self.white, (0, 50, 800, 300))
+        self.drawRect(self.white, (0, 50, 800, 300))
 
     def createOneOctaveView(self, topLeft):
         top, left = topLeft

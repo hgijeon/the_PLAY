@@ -3,7 +3,7 @@ import apiVar
 import time
 
 import SceneManager
-import LoadingScene
+from LoadingScene import LoadingScene
 from GameScene import GameScene
 
 class the_PLAY:
@@ -22,7 +22,7 @@ class the_PLAY:
             
             currentScene = sceneManager.getScene()
 
-            currentScene.timeEvent(startTime)
+            currentScene.updateTime(startTime)
             for event in gameapi.event.get():
                 currentScene.event(event)
 
