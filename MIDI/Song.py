@@ -1,5 +1,6 @@
 from struct import unpack
 
+import time as timeLib
 from constants import *
 
 from MidiFileParser import MidiFileParser
@@ -12,12 +13,9 @@ class Song:
     def __init__(self, test_file):
         self.songList=[]
         self.Flags=[]
-        midi_to_song = MidiToSong(self.songList)
-        midi_in = MidiFileParser(RawInstreamFile(test_file),midi_to_song)
-        midi_in.parseMThdChunk()
-        midi_in.parseMTrkChunks()
-        length = len(self.songList)
-        self.Flags=[0]*length
+
+        self.createSong(test_file)
+
  
     def createSong (self, test_file):
         midi_to_song = MidiToSong(self.songList)
@@ -26,19 +24,23 @@ class Song:
         midi_in.parseMTrkChunks()
         length = len(self.songList)
         self.Flags=[0]*length
-        #print len(self.Flags)
+
+        self.lastIndex = 0
 
     def checkForEvent(self, time):
-        length=len(self.songList)
-        i=0
         eventsAtTime = []
-        while (i<length):
-            if (self.songList[i].startTime <= time and self.Flags[i]==0):
+        for i in range(self.lastIndex, len(self.songList)):
+            if (self.songList[i].startTime <= time - self.startTime and self.Flags[i]==0):
                 eventsAtTime.append(self.songList[i])
                 self.Flags[i] = 1
-            i=i+1
+                self.lastIndex = i
+
+                
         #print len(eventsAtTime)
         return eventsAtTime
+        
+    def initStartTime(self, time):
+        self.startTime = time
         
     def printSong(self):
         length=len(self.songList)
@@ -51,6 +53,14 @@ if __name__ == '__main__':
     
     minuet = Song(test_file)
     #minuet.printSong()
+    minuet.initStartTime(timeLib.time())
+    while(True):
+        list = minuet.checkForEvent(timeLib.time())
+        if len(list) > 0:
+            for e in list:
+                e.displayEvent()
+
+    '''
     time=34819200
     list = minuet.checkForEvent(time)
     print (len(list))
@@ -66,3 +76,4 @@ if __name__ == '__main__':
            list[i].displayEvent()
            i=i+1
     print (len(list))
+'''
