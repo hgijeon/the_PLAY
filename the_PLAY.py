@@ -36,4 +36,8 @@ class the_PLAY:
 
 
 if __name__ == '__main__':
-    the_PLAY()
+    try:
+        the_PLAY()
+    except:        
+        gameapi.quit()
+        raise

@@ -1,10 +1,15 @@
-from View import *
+from KeyView import *
 
 width = 40
+height = 150
 
-class BlackKeyView(View):
+class BlackKeyView(KeyView):
     def onInit(self):
+        self.width = width
+        self.height = height
+        
         self.keyColor = gameapi.Color(200,200,200)
 
     def onDraw(self):
-        self.drawRect(self.keyColor, (0, 0, width, 150))
+        self.drawRect(self.keyColor, (0, 0, width, height))
+        super().drawBar()

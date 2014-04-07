@@ -21,4 +21,4 @@ class PianoView(View):
         bidth = BlackKeyView.width
         blackKeys = [BlackKeyView.BlackKeyView(self.scene, self, (50, 1000), RefVector(left + width*i - bidth/2, top)) for i in [1,2,4,5,6]]
 
-        return [ whiteKeys[0], blackKeys[0], whiteKeys[1], blackKeys[1], whiteKeys[2], whiteKeys[3], blackKeys[2], whiteKeys[4], blackKeys[3], whiteKeys[5], blackKeys[4], whiteKeys[6] ]
+        return whiteKeys + blackKeys #[ whiteKeys[0], blackKeys[0], whiteKeys[1], blackKeys[1], whiteKeys[2], whiteKeys[3], blackKeys[2], whiteKeys[4], blackKeys[3], whiteKeys[5], blackKeys[4], whiteKeys[6] ]
