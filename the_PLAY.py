@@ -13,7 +13,7 @@ class the_PLAY:
     def main(self):
         gameapi.init()
 
-        mainWindow = gameapi.display.set_mode((640, 480))
+        mainWindow = gameapi.display.set_mode((1280, 768))
         gameapi.display.set_caption('the_PLAY')
         sceneManager = SceneManager.SceneManager(GameScene, mainWindow)
 
