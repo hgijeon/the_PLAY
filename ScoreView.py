@@ -3,8 +3,8 @@ from View import *
 
 class ScoreView(View):
     def onInit(self):
-        self.black = gameapi.Color(0,0,0)
+        self.bg = gameapi.Color(200,200,200)
         
         
     def onDraw(self):
-        self.drawRect(self.black, (0, 0, 150, 100))
+        self.drawRect(self.bg, (0, 0, 150, 100))
