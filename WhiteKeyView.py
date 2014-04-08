@@ -5,6 +5,7 @@ height = 300
 
 class WhiteKeyView(KeyView):
     def onInit(self):
+        super().onInit()
         self.width = width
         self.height = height
 
@@ -12,4 +13,5 @@ class WhiteKeyView(KeyView):
 
     def onDraw(self):
         self.drawRect(self.keyColor, (5, 0, width-10, height))
-        super().drawBar()
+        self.drawDots()
+        self.drawBar()

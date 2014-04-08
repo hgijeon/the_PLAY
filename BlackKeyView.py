@@ -5,6 +5,7 @@ height = 150
 
 class BlackKeyView(KeyView):
     def onInit(self):
+        super().onInit()
         self.width = width
         self.height = height
         
@@ -12,4 +13,5 @@ class BlackKeyView(KeyView):
 
     def onDraw(self):
         self.drawRect(self.keyColor, (0, 0, width, height))
-        super().drawBar()
+        self.drawDots()
+        self.drawBar()

@@ -17,6 +17,10 @@ class the_PLAY:
         gameapi.display.set_caption('the_PLAY')
         sceneManager = SceneManager.SceneManager(GameScene, mainWindow)
 
+        startFps = 33
+        frameN = 30
+        frameAccu = [startFps] * frameN
+        frameCount = 0
         while True:
             startTime = time.time()
             
@@ -31,8 +35,13 @@ class the_PLAY:
 
             
             endTime = time.time()
-            print("%.2f fps"%(1/(endTime-startTime)))
 
+            mod = frameCount%frameN
+            frameAccu[mod] = 1/(endTime-startTime)
+            if mod == 0:
+                print("%.2f fps"%min(frameAccu))
+
+            frameCount+=1
 
 
 if __name__ == '__main__':
