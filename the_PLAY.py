@@ -22,6 +22,8 @@ class the_PLAY:
         frameN = 30
         frameAccu = [startFps] * frameN
         frameCount = 0
+        fpsText = fontObj.render("%.2f fps"%min(frameAccu), False, (128, 128, 0))
+        fpsClock = gameapi.time.Clock()
         while True:
             startTime = time.time()
             mod = frameCount%frameN
@@ -33,15 +35,18 @@ class the_PLAY:
                 currentScene.event(event)
 
             currentScene.draw()
-            if True:
-                fpsText = fontObj.render("%.2f fps"%min(frameAccu), False, (128, 128, 0))
-                mainWindow.blit(fpsText, fpsText.get_rect())
+            mainWindow.blit(fpsText, fpsText.get_rect())
             
             gameapi.display.update()
             endTime = time.time()
 
             frameAccu[mod] = 1/(endTime-startTime)
             frameCount+=1
+
+            if mod == 0:
+                minfps = min(frameAccu)
+                fpsText = fontObj.render("%.2f fps"%minfps, False, (128, 128, 0))
+                fpsClock.tick(minfps)
 
 
 if __name__ == '__main__':
