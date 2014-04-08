@@ -12,6 +12,7 @@ class the_PLAY:
 
     def main(self):
         gameapi.init()
+        fontObj = gameapi.font.Font('freesansbold.ttf', 32)
 
         mainWindow = gameapi.display.set_mode((1280, 768))
         gameapi.display.set_caption('the_PLAY')
@@ -23,6 +24,7 @@ class the_PLAY:
         frameCount = 0
         while True:
             startTime = time.time()
+            mod = frameCount%frameN
             
             currentScene = sceneManager.getScene()
 
@@ -31,16 +33,14 @@ class the_PLAY:
                 currentScene.event(event)
 
             currentScene.draw()
-            gameapi.display.update()
-
+            if True:
+                fpsText = fontObj.render("%.2f fps"%min(frameAccu), False, (128, 128, 0))
+                mainWindow.blit(fpsText, fpsText.get_rect())
             
+            gameapi.display.update()
             endTime = time.time()
 
-            mod = frameCount%frameN
             frameAccu[mod] = 1/(endTime-startTime)
-            if mod == 0:
-                print("%.2f fps"%min(frameAccu))
-
             frameCount+=1
 
 
