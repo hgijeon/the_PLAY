@@ -38,6 +38,17 @@ class Song:
                 
         #print len(eventsAtTime)
         return eventsAtTime
+
+
+    def checkForEvent(self, time, pitch):
+        eventsAtTime = []
+        for i in range(self.lastIndex, len(self.songList)):
+            if (self.songList[i].startTime <= time - self.startTime and self.Flags[i]==0 and self.songList[i].pitch==self.pitch):
+                eventsAtTime.append(self.songList[i])
+                self.Flags[i] = 1
+                self.lastIndex = i                
+        #print len(eventsAtTime)
+        return eventsAtTime    
         
     def initStartTime(self, time):
         self.startTime = time
