@@ -5,10 +5,10 @@ from ..View.GameScreenView import GameScreenView
 
 class GameScene(Scene):
     def initModel(self):
-        self.dotStartY = -50
+        self.dotStartY = -300
         self.lineY = 100
         self.dotEndY = 300
-        self.setDotSpeed(100)
+        self.setDotSpeed(50)
 
         self.playTime = 0
         self.play = True

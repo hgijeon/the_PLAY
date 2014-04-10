@@ -2,15 +2,15 @@ from .View import *
 from ..Model.Dot import Dot
 
 class KeyView(View):
-    def onInit(self):
-        self.dotList = [Dot(0,2), Dot(3,4), Dot(5,7), Dot(10,15)]
     
     def drawBar(self):
         self.drawRect((128,0,0), (0, self.scene.lineY, self.width, 5))
 
     def onUpdateTime(self, time):
         self.updateDots(self.scene.playTime)
-        
+
+    def setMiddle(self, middle):
+        self.middle = middle
         
     def drawDots(self):
         for dot in self.dotList:
@@ -18,6 +18,8 @@ class KeyView(View):
                 self.drawRect((0,0,128), dot.rect)
 
     def updateDots(self, playtime):
+        self.dotList = self.middle.keyList[self.pitch]
+        
         dotSpeed = self.scene.dotSpeed
         lineY = self.scene.lineY
         dotStartY = self.scene.dotStartY
