@@ -36,15 +36,15 @@ class the_PLAY:
 
             currentScene.draw()
             mainWindow.blit(fpsText, fpsText.get_rect())
+            endTime = time.time()
             
             gameapi.display.update()
-            endTime = time.time()
 
             frameAccu[mod] = 1/(endTime-startTime)
             frameCount+=1
 
             if mod == 0:
-                minfps = min(frameAccu)
+                minfps = min(frameAccu)*0.9
                 fpsText = fontObj.render("%.2f fps"%minfps, False, (128, 128, 0))
                 fpsClock.tick(minfps)
 
