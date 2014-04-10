@@ -7,10 +7,17 @@ from .MidiFileParser import MidiFileParser
 from .RawInstreamFile import RawInstreamFile
 from .MidiToSong import MidiToSong
 
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+
 
 class Song:
     
-    def __init__(self, test_file):
+    def __init__(self):
+        root = Tk()
+        root.withdraw() # we don't want a full GUI, so keep the root window from appearing
+        test_file = askopenfilename()
+        
         self.songList=[]
         self.Flags=[]
 
