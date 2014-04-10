@@ -1,4 +1,4 @@
-from KeyView import *
+from .KeyView import *
 
 width = 40
 height = 150

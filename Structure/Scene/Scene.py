@@ -1,5 +1,5 @@
-import gameapi
-import apiVar
+from ..Middle import gameapi
+from ..Middle import apiVar
 import sys
 
 class Scene:

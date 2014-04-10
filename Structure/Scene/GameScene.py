@@ -1,6 +1,6 @@
-from Scene import *
+from .Scene import *
 
-from GameScreenView import GameScreenView
+from ..View.GameScreenView import GameScreenView
 
 
 class GameScene(Scene):

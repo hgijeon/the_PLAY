@@ -1,10 +1,10 @@
-import gameapi
-import apiVar
+from Structure.Middle import gameapi
+from Structure.Middle import apiVar
 import time
 
-import SceneManager
-from LoadingScene import LoadingScene
-from GameScene import GameScene
+from Structure.Middle import SceneManager
+from Structure.Scene.LoadingScene import LoadingScene
+from Structure.Scene.GameScene import GameScene
 
 class the_PLAY:
     def __init__(self):

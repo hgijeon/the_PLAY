@@ -1,4 +1,4 @@
-from View import *
+from .View import *
 
 class LoadingScreenView(View):
     def onInit(self):

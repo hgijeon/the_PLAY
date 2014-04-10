@@ -1,7 +1,7 @@
-import gameapi
-import apiVar
+from ..Middle import gameapi
+from ..Middle import apiVar
 
-from RefVector import RefVector
+from ..Model.RefVector import RefVector
 
 class View:
     def __init__(self, scene, parentView, wh, offsetRefVec = RefVector()):

@@ -1,9 +1,9 @@
-from View import *
-from Dot import Dot
+from .View import *
+from ..Model.Dot import Dot
 
 class KeyView(View):
     def onInit(self):
-        self.dotList = [Dot(1,2), Dot(3,4), Dot(5,7), Dot(10,15)]
+        self.dotList = [Dot(0,2), Dot(3,4), Dot(5,7), Dot(10,15)]
     
     def drawBar(self):
         self.drawRect((128,0,0), (0, self.scene.lineY, self.width, 5))

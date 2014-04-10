@@ -1,7 +1,7 @@
 # -*- coding: ISO-8859-1 -*-
 
-from MidiOutStream import MidiOutStream
-from Event import Event
+from .MidiOutStream import MidiOutStream
+from .Event import Event
 class MidiToSong (MidiOutStream):
     
     """

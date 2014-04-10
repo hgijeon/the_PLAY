@@ -5,7 +5,7 @@
 from struct import unpack
 
 # custom import
-from DataTypeConverters import readBew, readVar, varLen
+from .DataTypeConverters import readBew, readVar, varLen
 
 
 class RawInstreamFile:

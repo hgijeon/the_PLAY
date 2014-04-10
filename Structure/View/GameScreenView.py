@@ -1,7 +1,7 @@
-from View import *
+from .View import *
 
-from PianoView import PianoView
-from ScoreView import ScoreView
+from .PianoView import PianoView
+from .ScoreView import ScoreView
 
 class GameScreenView(View):
     def onInit(self):

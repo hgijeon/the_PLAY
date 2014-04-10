@@ -1,6 +1,6 @@
-from Scene import *
+from .Scene import *
 
-from LoadingScreenView import LoadingScreenView
+from ..View.LoadingScreenView import LoadingScreenView
 
 
 class LoadingScene(Scene):

@@ -1,7 +1,7 @@
-from View import *
+from .View import *
 
-import BlackKeyView
-import WhiteKeyView
+from . import BlackKeyView
+from . import WhiteKeyView
 
 class PianoView(View):
     def onInit(self):
