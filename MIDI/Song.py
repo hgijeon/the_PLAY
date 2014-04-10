@@ -27,10 +27,10 @@ class Song:
 
         self.lastIndex = 0
 
-    def checkForEvent(self, time):
+    def checkForEvent(self, pitch, eventType):
         eventsAtTime = []
         for i in range(self.lastIndex, len(self.songList)):
-            if (self.songList[i].startTime <= time - self.startTime and self.Flags[i]==0):
+            if (self.songList[i].pitch == pitch and self.songList.eventType == eventType):
                 eventsAtTime.append(self.songList[i])
                 self.Flags[i] = 1
                 self.lastIndex = i
