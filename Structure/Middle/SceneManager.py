@@ -1,5 +1,9 @@
 from ..Scene.GameScene import GameScene
 
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+
+
 class SceneManager:
     def __init__(self, startSceneClass, window):
         self.initModel()
@@ -8,8 +12,12 @@ class SceneManager:
         self.sceneStack = [scene]
 
         if isinstance(scene, GameScene):
+#            root = Tk()
+#            root.withdraw() # we don't want a full GUI, so keep the root window from appearing
+ 
+#            scene.setSong(askopenfilename())
             scene.setSong("Music/minuet1track.mid")
-
+            
     def startWith(self, startScene):
         self.sceneStack = [startScene]
 
