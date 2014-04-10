@@ -7,13 +7,14 @@ from Dot import Dot
 
 class pianoKey ():
     
-    def __init__(self, songList):
+    def __init__(self, test_file):
+        song = Song(test_file)
         self.keyList = []
         for i in range (0,128):
-            onEvents = checkForEvent(i, 0x01)
-            self.keyList[i] = createDots(onEvents)
-            offEvents = checkForEvent(i, 0x00)
-            addEndTimesToDots(offEvents, self.keylist[i])
+            onEvents = song.checkForEvent(i, 0x01)
+            self.keyList[i] = self.createDots(onEvents)
+            offEvents = song.checkForEvent(i, 0x00)
+            self.addEndTimesToDots(offEvents, self.keylist[i])
         
     def createDots (self, onEvents):
         length = len(onEvents)
