@@ -7,8 +7,8 @@ from ..Model.Dot import Dot
 
 class pianoKey ():
     
-    def __init__(self, test_file):
-        song = Song(test_file)
+    def __init__(self):
+        song = Song()
         self.keyList = [[]]*128
         for i in range(128):
             onEvents = song.checkForEvent(i, 0x01)

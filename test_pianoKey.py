@@ -1,6 +1,6 @@
 from Structure.Middle.pianoKey import pianoKey
 
-p = pianoKey("Music/minuet1track.mid")
+p = pianoKey()
 
 for i in range(128):
     print("\n%d: "%i,end="")
