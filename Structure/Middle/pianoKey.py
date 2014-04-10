@@ -34,3 +34,41 @@ class pianoKey ():
             if (keyList[i+1].startTime > offEvents[i].startTime):
                 keyList[i].endTime = offEvents[i].startTime
         keyList[-1].endTime = offEvents[-1].startTime
+
+    def getData(self, pitch, playtime = None):
+        if playtime == None:
+            playtime = self.scene.playTime
+            
+        dotSpeed = self.scene.dotSpeed
+        lineY = self.scene.lineY
+        dotStartY = self.scene.dotStartY
+        dotEndY = self.scene.dotEndY
+
+        dotList = self.keyList[pitch]
+
+        removeList = []        
+        for dot in dotList:
+            startY = (playtime - dot.startTime) * dotSpeed + lineY
+            if startY > dotEndY:
+                startY = dotEndY
+            elif startY < dotStartY:
+                dot.rect = None
+                continue
+
+            if dot.endTime == None:
+                endY = dotStartY
+            else :
+                endY = (playtime - dot.endTime) * dotSpeed + lineY
+                if endY > dotEndY:
+                    removeList.append(dot)
+                    continue
+                elif endY < dotStartY:
+                    endY = dotStartY
+
+            dot.info = (startY, endY)
+
+        for e in removeList:
+            dotList.remove(e)
+
+        return dotList
+        

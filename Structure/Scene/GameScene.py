@@ -17,6 +17,7 @@ class GameScene(Scene):
 
     def setSong(self, path):
         key = pianoKey(path)
+        key.scene = self
 
         for e in self.pianoKeyObserver:
             e.setMiddle(key)

@@ -14,40 +14,15 @@ class KeyView(View):
         
     def drawDots(self):
         for dot in self.dotList:
-            if dot.rect != None :
-                self.drawRect((0,0,128), dot.rect)
+            if dot.info != None :
+                rect = (0, dot.info[0], self.width, dot.info[1] - dot.info[0])
+                self.drawRect((0,0,128), rect)
 
     def updateDots(self, playtime):
-        self.dotList = self.middle.keyList[self.pitch]
+        self.dotList = self.middle.getData(self.pitch)
+
         
-        dotSpeed = self.scene.dotSpeed
-        lineY = self.scene.lineY
-        dotStartY = self.scene.dotStartY
-        dotEndY = self.scene.dotEndY
-
-        removeList = []        
-        for dot in self.dotList:
-            startY = (playtime - dot.startTime) * dotSpeed + lineY
-            if startY > dotEndY:
-                startY = dotEndY
-            elif startY < dotStartY:
-                dot.rect = None
-                continue
-
-            if dot.endTime == None:
-                endY = dotStartY
-            else :
-                endY = (playtime - dot.endTime) * dotSpeed + lineY
-                if endY > dotEndY:
-                    removeList.append(dot)
-                    continue
-                elif endY < dotStartY:
-                    endY = dotStartY
-
-            dot.rect = (0, endY, self.width, startY-endY)
-
-        for e in removeList:
-            self.dotList.remove(e)
+        
             
                 
 
