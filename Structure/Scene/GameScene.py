@@ -1,17 +1,25 @@
 from .Scene import *
 
 from ..View.GameScreenView import GameScreenView
-
+from ..Middle.pianoKey import pianoKey
 
 class GameScene(Scene):
     def initModel(self):
-        self.dotStartY = -50
+        self.dotStartY = -300
         self.lineY = 100
         self.dotEndY = 300
-        self.setDotSpeed(100)
+        self.setDotSpeed(150)
 
         self.playTime = 0
         self.play = True
+
+        self.pianoKeyObserver = []
+
+    def setSong(self, path):
+        key = pianoKey(path)
+
+        for e in self.pianoKeyObserver:
+            e.setMiddle(key)
         
 
     def setDotSpeed(self, pixelPerSecond):
