@@ -7,18 +7,19 @@ from ..Middle.pianoKey import pianoKey
 
 class PianoView(View):
     def onInit(self):
+        self.scene.pianoKeyObserver.append(self)
+        
         self.white = (255,255,255)
 
         self.keyList = []
         
         tmp = self.createOneOctaveView((0,0), 60)
-        self.keyList += tmp
+        self.scene.pianoKeyObserver += tmp
         self.childList += tmp
         tmp = self.createOneOctaveView((WhiteKeyView.width*7,0), 72)
-        self.keyList += tmp
+        self.scene.pianoKeyObserver += tmp
         self.childList += tmp
 
-        self.setMiddle(pianoKey("Music/minuet1track.mid"))
         
     def onDraw(self):
         self.drawRect(self.white, (0, 50, 800, 300))
@@ -26,8 +27,6 @@ class PianoView(View):
     def setMiddle(self, middle):
         self.middle = middle
         
-        for k in self.keyList:
-            k.setMiddle(middle)
 
     def createOneOctaveView(self, leftTop, startPitch):
         left, top = leftTop

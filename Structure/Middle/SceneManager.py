@@ -1,9 +1,14 @@
+from ..Scene.GameScene import GameScene
 
 class SceneManager:
     def __init__(self, startSceneClass, window):
         self.initModel()
         self.startWindow = window
-        self.sceneStack = [startSceneClass(self, window)]
+        scene = startSceneClass(self, window)
+        self.sceneStack = [scene]
+
+        if isinstance(scene, GameScene):
+            scene.setSong("Music/minuet1track.mid")
 
     def startWith(self, startScene):
         self.sceneStack = [startScene]
