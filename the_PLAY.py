@@ -5,6 +5,7 @@ import time
 from Structure.Middle import SceneManager
 from Structure.Scene.LoadingScene import LoadingScene
 from Structure.Scene.GameScene import GameScene
+from Structure.Scene.SelectScene import SelectScene
 
 class the_PLAY:
     def __init__(self):
@@ -16,7 +17,7 @@ class the_PLAY:
 
         mainWindow = gameapi.display.set_mode((1280, 768))
         gameapi.display.set_caption('the_PLAY')
-        sceneManager = SceneManager.SceneManager(GameScene, mainWindow)
+        sceneManager = SceneManager.SceneManager(SelectScene, mainWindow)
 
         startFps = 33
         frameN = 30

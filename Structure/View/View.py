@@ -4,7 +4,7 @@ from ..Middle import apiVar
 from ..Model.RefVector import RefVector
 
 class View:
-    def __init__(self, scene, parentView, wh, offsetRefVec = RefVector()):
+    def __init__(self, scene, parentView, wh=None, offsetRefVec = RefVector()):
         self.childList = []
         
         self.scene = scene
