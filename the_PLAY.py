@@ -63,7 +63,11 @@ class the_PLAY:
             tkroot.update()
 
 
-            frameAccu[mod] = 1/(endTime-startTime)
+            try:
+                rate = 1/(endTime-startTime)
+            except:
+                rate = 500
+            frameAccu[mod] = rate
             frameCount+=1
 
             if mod == 0:
