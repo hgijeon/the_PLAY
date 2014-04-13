@@ -52,7 +52,7 @@ class pianoKey ():
             if startY > dotEndY:
                 startY = dotEndY
             elif startY < dotStartY:
-                dot.rect = None
+                dot.info = None
                 continue
 
             if dot.endTime == None:
