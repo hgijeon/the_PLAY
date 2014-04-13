@@ -57,11 +57,11 @@ class the_PLAY:
             currentScene.draw()
             mainWindow.blit(fpsText, fpsText.get_rect())
             
-            endTime = time.time()
             
             gameapi.display.flip()
             tkroot.update()
-
+            
+            endTime = time.time()
 
             try:
                 rate = 1/(endTime-startTime)
