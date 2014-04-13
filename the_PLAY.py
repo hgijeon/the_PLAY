@@ -1,5 +1,10 @@
 from Structure.Middle import gameapi
 from Structure.Middle import apiVar
+
+import tkinter as tk
+from sys import platform as _platform
+import os
+
 import time
 
 from Structure.Middle import SceneManager
@@ -12,12 +17,26 @@ class the_PLAY:
         self.main()
 
     def main(self):
+        tkroot = tk.Tk() # using with tk
+        tkroot.withdraw() # we don't want a full GUI, so keep the root window from appearing
+        embed = tk.Frame(tkroot, width=100, height=100)
+        embed.pack()
+
+        if _platform == "linux" or _platform == "linux2":
+            os.environ['SDL_WINDOWID'] = str(embed.winfo_id())
+        elif _platform == "darwin":
+            os.environ['SDL_WINDOWID'] = str(embed.winfo_id())
+        elif _platform == "win32":
+            os.environ['SDL_VIDEODRIVER'] = 'windib'
+        else:
+            print("cannot support '%s'."% _platform)
+
         gameapi.init()
         fontObj = gameapi.font.Font('freesansbold.ttf', 32)
 
         mainWindow = gameapi.display.set_mode((1280, 768))
         gameapi.display.set_caption('the_PLAY')
-        sceneManager = SceneManager.SceneManager(SelectScene, mainWindow)
+        sceneManager = SceneManager.SceneManager(SelectScene, mainWindow, tkroot)
 
         startFps = 33
         frameN = 30
@@ -37,9 +56,12 @@ class the_PLAY:
 
             currentScene.draw()
             mainWindow.blit(fpsText, fpsText.get_rect())
+            
             endTime = time.time()
             
-            gameapi.display.update()
+            gameapi.display.flip()
+            tkroot.update()
+
 
             frameAccu[mod] = 1/(endTime-startTime)
             frameCount+=1

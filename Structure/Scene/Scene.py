@@ -9,6 +9,7 @@ class Scene:
 
         self.initModel()
         self.initMainView()
+        print(self.__class__.__name__)
 
     def initModel(self):
         pass
