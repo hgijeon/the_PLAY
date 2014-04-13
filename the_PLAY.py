@@ -59,9 +59,10 @@ class the_PLAY:
             
             
             gameapi.display.flip()
+            endTime = time.time()
+            
             tkroot.update()
             
-            endTime = time.time()
 
             try:
                 rate = 1/(endTime-startTime)
