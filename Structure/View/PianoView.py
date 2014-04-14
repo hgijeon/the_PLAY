@@ -12,13 +12,11 @@ class PianoView(View):
         self.white = (255,255,255)
 
         self.keyList = []
-        
-        tmp = self.createOneOctaveView((0,0), 60)
-        self.scene.pianoKeyObserver += tmp
-        self.childList += tmp
-        tmp = self.createOneOctaveView((WhiteKeyView.width*7,0), 72)
-        self.scene.pianoKeyObserver += tmp
-        self.childList += tmp
+
+        for octave in [3,4,5]:
+            tmp = self.createOneOctaveView((WhiteKeyView.width * 7 * (octave-4),0), 12 + 12*octave)
+            self.scene.pianoKeyObserver += tmp
+            self.childList += tmp
 
         
     def onDraw(self):
