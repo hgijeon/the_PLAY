@@ -16,6 +16,13 @@ class KeyView(View):
         self.updateDots(self.scene.playTime)
         if self.middle.check(self.pitch):
             self.pressTime = time
+            if self.act == True:
+                pass
+                #add score
+            else :
+                #decrease score
+                pass
+            
 
         timediff = time - self.pressTime
         if timediff > threshold:

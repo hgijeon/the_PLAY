@@ -1,7 +1,7 @@
 from .KeyView import *
 
-width = 80
-height = 300
+width = 50
+height = 200
 
 class WhiteKeyView(KeyView):
     def onInit(self):

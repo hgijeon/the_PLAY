@@ -1,7 +1,7 @@
 from .KeyView import *
 
-width = 40
-height = 150
+width = 30
+height = 100
 
 class BlackKeyView(KeyView):
     def onInit(self):
