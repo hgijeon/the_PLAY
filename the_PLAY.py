@@ -36,7 +36,7 @@ class the_PLAY:
             print("cannot support '%s'."% _platform)
 
         gameapi.init()
-        fontObj = gameapi.font.Font('freesansbold.ttf', 32)
+        fontObj = gameapi.font.Font('freesansbold.ttf', 64)
 
         mainWindow = gameapi.display.set_mode((1280, 768))
         gameapi.display.set_caption('the_PLAY')

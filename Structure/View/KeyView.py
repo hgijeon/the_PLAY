@@ -8,20 +8,32 @@ threshold = 0.3
 class KeyView(View):
     def onInit(self):
         self.pressTime = 0
+        self.score = None
+        self.prevTime = None
+        
     
     def drawBar(self):
         self.drawRect((128,0,0), (0, self.scene.lineY, self.width, 5))
 
     def onUpdateTime(self, time):
+        if self.prevTime == None:
+            self.prevTime = time
         self.updateDots(self.scene.playTime)
         if self.middle.check(self.pitch):
             self.pressTime = time
+            if self.score == None:
+                self.score = 0
+                
             if self.act == True:
+                self.score += 1000*(time - self.prevTime)
                 pass
-                #add score
             else :
-                #decrease score
+                self.score -= 1000*(time - self.prevTime)
                 pass
+        else:
+            if self.score != None:
+                self.scene.score += int(self.score)
+                self.score = None
             
 
         timediff = time - self.pressTime
@@ -31,6 +43,7 @@ class KeyView(View):
             ratio = timediff/threshold
         self.keyColor = [self.downColor[i] + (self.upColor[i] - self.downColor[i]) * ratio for i in [0,1,2]]
 
+        self.prevTime = time
 
     def setMiddle(self, middle):
         self.middle = middle
@@ -48,6 +61,12 @@ class KeyView(View):
                    
                 rect = (10, dot.info[1], self.width-20, dot.info[0] - dot.info[1])
                 self.drawRect(color, rect)
+
+        if self.score != None:
+            self.drawScore()
+
+    def drawScore(self):
+        self.drawChar(str(int(self.score)), (0,200), self.scene.scoreFont)
 
     def updateDots(self, playtime):
         self.dotList = self.middle.getData(self.pitch)

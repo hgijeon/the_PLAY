@@ -10,6 +10,9 @@ class GameScene(Scene):
         self.dotEndY = 300
         self.setDotSpeed(150)
 
+        self.scoreFont = gameapi.font.Font('freesansbold.ttf', 32)
+        self.score = 0
+
         self.playTime = 0
         self.play = True
 
