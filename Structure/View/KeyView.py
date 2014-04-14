@@ -1,17 +1,33 @@
 from .View import *
 from ..Model.Dot import Dot
 
-class KeyView(View):
 
+threshold = 0.3
+
+
+class KeyView(View):
+    def onInit(self):
+        self.pressTime = 0
     
     def drawBar(self):
         self.drawRect((128,0,0), (0, self.scene.lineY, self.width, 5))
 
     def onUpdateTime(self, time):
         self.updateDots(self.scene.playTime)
+        if self.middle.check(self.pitch):
+            self.pressTime = time
+
+        timediff = time - self.pressTime
+        if timediff > threshold:
+            ratio = 1
+        else:
+            ratio = timediff/threshold
+        self.keyColor = [self.downColor[i] + (self.upColor[i] - self.downColor[i]) * ratio for i in [0,1,2]]
+
 
     def setMiddle(self, middle):
         self.middle = middle
+
         
     def drawDots(self):
         lineY = self.scene.lineY
@@ -28,6 +44,8 @@ class KeyView(View):
 
     def updateDots(self, playtime):
         self.dotList = self.middle.getData(self.pitch)
+
+
 
         
         

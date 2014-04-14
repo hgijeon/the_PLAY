@@ -1,9 +1,21 @@
 from struct import unpack
 
+from ..Middle import gameapi
+from ..Middle import apiVar
+
 from .MIDI.constants import *
 
 from .MIDI.Song import Song
 from ..Model.Dot import Dot
+
+key = {
+    'a':60,
+    'w':61,
+    's':62,
+    'e':63,
+    'd':64,
+    }
+status = [False] * 128
 
 class pianoKey ():
     
@@ -15,6 +27,16 @@ class pianoKey ():
             self.keyList[i] = self.createDots(onEvents)
             offEvents = song.checkForEvent(i, 0x00)
             self.addEndTimesToDots(offEvents, self.keyList[i])
+
+    def check(self, pitch):
+        return status[pitch]
+
+    def updateStatus(self, event):
+        if event.type == apiVar.KEYDOWN:
+            status[key[gameapi.key.name(event.key)]] = True
+        elif event.type == apiVar.KEYUP:
+            status[key[gameapi.key.name(event.key)]] = False
+        
         
     def createDots (self, onEvents):
         length = len(onEvents)

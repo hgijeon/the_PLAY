@@ -27,7 +27,7 @@ screen = pg.display.set_mode((w,h))
 
 pos = 0
 root.withdraw() # we don't want a full GUI, so keep the root window from appearin
-print(tk.filedialog.askopenfilename())
+#print(tk.filedialog.askopenfilename())
 
 while 1:
     # Do some pygame stuff
@@ -35,8 +35,12 @@ while 1:
     pos = (pos + 1) % screen.get_width()
     pg.draw.circle(screen, pg.Color(255,255,255), (pos,100), 30)
 
+    
+    for event in pg.event.get():
+        print("aaa")
+
     # Update the pygame display
     pg.display.flip()
 
     # Update the Tk display
-    root.update()
+    #root.update()

@@ -18,6 +18,9 @@ class PianoView(View):
             self.scene.pianoKeyObserver += tmp
             self.childList += tmp
 
+    def onEvent(self, event):
+        self.middle.updateStatus(event)
+
         
     def onDraw(self):
         self.drawRect(self.white, (0, 50, 800, 300))

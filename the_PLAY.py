@@ -16,10 +16,14 @@ class the_PLAY:
     def __init__(self):
         self.main()
 
+    def asdf(self, event):
+        print ("asdfasdfasdfasdfasdf")
+
     def main(self):
         tkroot = tk.Tk() # using with tk
         tkroot.withdraw() # we don't want a full GUI, so keep the root window from appearing
         embed = tk.Frame(tkroot, width=100, height=100)
+        embed.bind("<Key>", self.asdf)
         embed.pack()
 
         if _platform == "linux" or _platform == "linux2":
@@ -60,12 +64,13 @@ class the_PLAY:
             
             gameapi.display.flip()
             endTime = time.time()
-            
-            tkroot.update()
+
             
 
             try:
                 rate = 1/(endTime-startTime)
+                if rate<10:
+                    rate = 10
             except:
                 rate = 500
             frameAccu[mod] = rate
@@ -74,7 +79,7 @@ class the_PLAY:
             if mod == 0:
                 minfps = min(frameAccu)*0.9
                 fpsText = fontObj.render("%.2f fps"%minfps, False, (128, 128, 0))
-                fpsClock.tick(minfps)
+                #fpsClock.tick(minfps)
 
 
 if __name__ == '__main__':

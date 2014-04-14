@@ -9,7 +9,8 @@ class WhiteKeyView(KeyView):
         self.width = width
         self.height = height
 
-        self.keyColor = gameapi.Color(128,128,128)
+        self.upColor = (128,128,128)
+        self.downColor = (255,255,255)
 
     def onDraw(self):
         self.drawRect(self.keyColor, (5, 0, width-10, height))
