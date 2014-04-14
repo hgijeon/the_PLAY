@@ -42,7 +42,7 @@ class View:
         #gameapi.draw.rect(self.surface, color, rect)
 
     def drawChar(self, string, offset, fontObj):
-        tmp = fontObj.render(string, False, (0,0,0))
+        tmp = fontObj.render(string, True, (0,0,0))
         cvrt = (offset[0]+self.absRefVec.lt[0], offset[1]+self.absRefVec.lt[1])
         self.scene.window.blit(tmp, cvrt)
 
