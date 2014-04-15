@@ -3,6 +3,8 @@ from .Scene import *
 from ..View.GameScreenView import GameScreenView
 from ..Middle.pianoKey import pianoKey
 
+import os
+
 class GameScene(Scene):
     def initModel(self):
         self.dotStartY = -300
@@ -12,6 +14,10 @@ class GameScene(Scene):
 
         self.scoreFont = gameapi.font.Font('freesansbold.ttf', 32)
         self.score = 0
+
+        print(os.getcwd())
+        self.blackDot = gameapi.image.load(os.path.join("Image","black dot.png"))
+        self.whiteDot = gameapi.image.load(os.path.join("Image","white dot.png"))
 
         self.playTime = 0
         self.play = True
