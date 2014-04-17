@@ -1,6 +1,7 @@
 from Structure.Middle.pianoKey import pianoKey
+import os
 
-p = pianoKey("Music/Twinkle Twinkle Little Star.mid")
+p = pianoKey(os.path.join("Music", "Twinkle Twinkle Little Star.mid"))
 
 for i in range(128):
     print("\n%d: "%i,end="")
