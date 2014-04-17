@@ -46,6 +46,11 @@ class View:
         cvrt = (offset[0]+self.absRefVec.lt[0], offset[1]+self.absRefVec.lt[1])
         self.scene.window.blit(tmp, cvrt)
 
+    def drawResizeImage(self, image, rect):
+            surf = gameapi.transform.scale(image, (int(rect[2]),int(rect[3])))
+            cvrt = (rect[0]+self.absRefVec.lt[0], rect[1]+self.absRefVec.lt[1])
+            self.scene.window.blit(surf,cvrt)
+            
     def fill(self, color):
         self.scene.window.fill(color)
 
