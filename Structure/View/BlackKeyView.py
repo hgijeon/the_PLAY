@@ -15,6 +15,6 @@ class BlackKeyView(KeyView):
         super().onInit()
 
     def onDraw(self):
-        self.drawRect(self.keyColor, (0, 0, width, height))
+        self.drawRect(self.keyColor, (0, 0, width, height), 1)
         self.drawDots()
         self.drawBar()

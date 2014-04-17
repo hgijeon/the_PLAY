@@ -36,9 +36,9 @@ class View:
             
         self.onUpdateTime(time)
 
-    def drawRect(self, color, rect):
+    def drawRect(self, color, rect, width = 0):
         cvrt=(rect[0]+self.absRefVec.lt[0],rect[1]+self.absRefVec.lt[1],rect[2],rect[3]) 
-        gameapi.draw.rect(self.scene.window, color, cvrt)
+        gameapi.draw.rect(self.scene.window, color, cvrt, width)
         #gameapi.draw.rect(self.surface, color, rect)
 
     def drawChar(self, string, offset, fontObj):

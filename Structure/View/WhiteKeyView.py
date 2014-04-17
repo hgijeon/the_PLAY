@@ -15,6 +15,6 @@ class WhiteKeyView(KeyView):
         super().onInit()
 
     def onDraw(self):
-        self.drawRect(self.keyColor, (5, 0, width-10, height))
+        self.drawRect(self.keyColor, (5, 0, width-10, height), 1)
         self.drawDots()
         self.drawBar()

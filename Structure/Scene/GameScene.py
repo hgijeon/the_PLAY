@@ -15,10 +15,14 @@ class GameScene(Scene):
         self.scoreFont = gameapi.font.Font('freesansbold.ttf', 32)
         self.score = 0
 
-        print(os.getcwd())
         self.blackDot = gameapi.image.load(os.path.join("Image","black dot.png"))
         self.whiteDot = gameapi.image.load(os.path.join("Image","white dot.png"))
 
+        self.octWidth = 0
+        self.octHeight = 200
+        tmp = gameapi.image.load(os.path.join("Image","1_octive_black.png"))
+        self.octaveImg = tmp
+        
         self.playTime = 0
         self.play = True
 

@@ -38,7 +38,7 @@ class the_PLAY:
         gameapi.init()
         fontObj = gameapi.font.Font('freesansbold.ttf', 64)
 
-        mainWindow = gameapi.display.set_mode((1280, 768))
+        mainWindow = gameapi.display.set_mode((800, 600))
         gameapi.display.set_caption('the_PLAY')
         sceneManager = SceneManager.SceneManager(SelectScene, mainWindow, tkroot)
 
