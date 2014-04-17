@@ -48,6 +48,7 @@ class MidiToSong (MidiOutStream):
         #print 'tempo:', value
         self.changeTempo(value)
 
+
 if __name__ == '__main__':
 
     # get data

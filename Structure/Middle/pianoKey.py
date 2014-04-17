@@ -30,6 +30,7 @@ class pianoKey ():
             self.keyList[i] = self.createDots(onEvents)
             offEvents = song.checkForEvent(i, 0x00)
             self.addEndTimesToDots(offEvents, self.keyList[i])
+        self.endTime = song.endTime
 
     def check(self, pitch):
         return status[pitch]

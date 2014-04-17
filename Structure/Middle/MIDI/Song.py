@@ -14,6 +14,7 @@ class Song:
        
         self.songList=[]
         self.Flags=[]
+        self.endTime = 0
 
         self.createSong(test_file)
 
@@ -24,7 +25,8 @@ class Song:
         midi_in.parseMThdChunk()
         midi_in.parseMTrkChunks()
         length = len(self.songList)
-        self.Flags=[0]*length
+        self.Flags = [0]*length
+        self.endTime = self.songList[length-1].startTime
 
         self.lastIndex = 0
 
