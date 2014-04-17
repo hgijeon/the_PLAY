@@ -15,14 +15,19 @@ class GameScene(Scene):
         self.scoreFont = gameapi.font.Font('freesansbold.ttf', 32)
         self.score = 0
 
+        self.octWidth = 266
+        self.octHeight = 200
+        tmp = gameapi.image.load(os.path.join("Image","1_octive_black.png"))
+        self.octaveImg = gameapi.transform.scale(tmp, (self.octWidth, self.octHeight))
+
+        self.whiteWidth = self.octWidth/7
+        self.whiteHeight = self.octHeight
+        self.blackWidth = self.octWidth * 0.095
+        self.blackHeight = self.octHeight * 0.68
+
         self.blackDot = gameapi.image.load(os.path.join("Image","black dot.png"))
         self.whiteDot = gameapi.image.load(os.path.join("Image","white dot.png"))
 
-        self.octWidth = 0
-        self.octHeight = 200
-        tmp = gameapi.image.load(os.path.join("Image","1_octive_black.png"))
-        self.octaveImg = tmp
-        
         self.playTime = 0
         self.play = True
 

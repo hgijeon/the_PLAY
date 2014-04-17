@@ -2,6 +2,7 @@ from .View import *
 
 from . import BlackKeyView
 from . import WhiteKeyView
+from . import OctaveImageView
 
 from ..Middle.pianoKey import pianoKey
 
@@ -14,9 +15,8 @@ class PianoView(View):
         self.keyList = []
 
         for octave in [3,4,5]:
-            tmp = self.createOneOctaveView((WhiteKeyView.width * 7 * (octave-4),0), 12 + 12*octave)
-            self.scene.pianoKeyObserver += tmp
-            self.childList += tmp
+            self.addOneOctaveView((self.scene.octWidth * (octave-4),0),  12 + 12*octave)
+            
 
     def onEvent(self, event):
         self.middle.updateStatus(event)
@@ -27,16 +27,23 @@ class PianoView(View):
 
     def setMiddle(self, middle):
         self.middle = middle
+
+    def addOneOctaveView(self, lt, startPitch):
+        tmp = self.createOneOctaveView(lt, startPitch)
+        self.scene.pianoKeyObserver += tmp
+
+        self.childList.append(OctaveImageView.OctaveImageView(self.scene, self, (1000, 1000), RefVector(lt[0], lt[1])))
+        self.childList += tmp
         
 
     def createOneOctaveView(self, leftTop, startPitch):
         left, top = leftTop
 
-        width = WhiteKeyView.width
+        width = self.scene.whiteWidth
         whiteKeys = [WhiteKeyView.WhiteKeyView(self.scene, self, (1000, 1000), RefVector(left + width*i, top)) for i in range(7)]
 
 
-        bidth = BlackKeyView.width
+        bidth = self.scene.blackWidth
         blackKeys = [BlackKeyView.BlackKeyView(self.scene, self, (1000, 1000), RefVector(left + width*i - bidth/2, top)) for i in [1,2,4,5,6]]
 
         whitePitch = [0,2,4,5,7,9,11]

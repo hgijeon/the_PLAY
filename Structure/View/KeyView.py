@@ -44,7 +44,7 @@ class KeyView(View):
             ratio = 1
         else:
             ratio = timediff/threshold
-        self.keyColor = [self.downColor[i] + (self.upColor[i] - self.downColor[i]) * ratio for i in [0,1,2]]
+        self.keyColor = [self.downColor[i] + (self.upColor[i] - self.downColor[i]) * ratio for i in [0,1,2,3]]
 
         self.prevTime = time
 
