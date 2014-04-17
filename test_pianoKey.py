@@ -1,11 +1,7 @@
 from Structure.Middle.pianoKey import pianoKey
 import os
 
-<<<<<<< HEAD
-p = pianoKey(".\MIDI\Music\minuet1track.mid")
-=======
 p = pianoKey(os.path.join("Music", "Twinkle Twinkle Little Star.mid"))
->>>>>>> feaf66f342f14e6f40130fdff3e32c3a1abf0fb4
 
 for i in range(128):
     print("\n%d: "%i,end="")
