@@ -36,11 +36,13 @@ class pianoKey ():
         return status[pitch]
 
     def updateStatus(self, event):
-        if event.type == apiVar.KEYDOWN:
-            status[key[gameapi.key.name(event.key)]] = True
-        elif event.type == apiVar.KEYUP:
-            status[key[gameapi.key.name(event.key)]] = False
-        
+        try:
+            if event.type == apiVar.KEYDOWN:
+                status[key[gameapi.key.name(event.key)]] = True
+            elif event.type == apiVar.KEYUP:
+                status[key[gameapi.key.name(event.key)]] = False
+        except:
+            print("not supported key")
         
     def createDots (self, onEvents):
         length = len(onEvents)
