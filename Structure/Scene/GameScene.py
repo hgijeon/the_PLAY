@@ -37,8 +37,7 @@ class GameScene(Scene):
         key = pianoKey(path)
         key.scene = self
 
-        # TODO
-        self.midiEndTime = 10
+        self.midiEndTime = key.endTime + self.startTimeOffset - self.endTimeOffset
 
         for e in self.pianoKeyObserver:
             e.setMiddle(key)
