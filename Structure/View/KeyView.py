@@ -21,7 +21,7 @@ class KeyView(View):
     def onUpdateTime(self, time):
         if self.prevTime == None:
             self.prevTime = time
-        self.updateDots(self.scene.playTime)
+        self.updateDots()
         if self.middle.check(self.pitch):
             self.pressTime = time
             if self.score == None:
@@ -79,7 +79,7 @@ class KeyView(View):
     def drawScore(self):
         self.drawChar(str(int(self.score)), (0,200), self.scene.scoreFont)
 
-    def updateDots(self, playtime):
+    def updateDots(self):
         self.dotList = self.middle.getData(self.pitch)
 
 

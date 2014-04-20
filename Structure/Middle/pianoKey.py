@@ -65,7 +65,8 @@ class pianoKey ():
 
     def getData(self, pitch, playtime = None):
         if playtime == None:
-            playtime = self.scene.playTime
+            playtime = self.scene.playTime - self.scene.startTimeOffset
+
             
         dotSpeed = self.scene.dotSpeed
         lineY = self.scene.lineY
