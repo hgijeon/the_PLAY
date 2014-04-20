@@ -1,5 +1,5 @@
 from ..Scene.GameScene import GameScene
-
+from ..Scene.SelectScene import SelectScene
 
 
 class SceneManager:
@@ -18,4 +18,8 @@ class SceneManager:
     def pushGameScene(self, filename):
         scene = GameScene(self, self.startWindow)
         scene.setSong(filename)
-        self.sceneStack.append(scene)
+        self.sceneStack[-1] = scene
+
+    def setSelectScene(self):
+        scene = SelectScene(self, self.startWindow)
+        self.sceneStack[-1] = scene
