@@ -1,0 +1,3 @@
+from Structure.View.start_scene import StartScene
+
+StartScene()

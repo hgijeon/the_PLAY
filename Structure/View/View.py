@@ -1,5 +1,5 @@
-from ..Middle import gameapi
-from ..Middle import apiVar
+from .Middle import gameapi
+from .Middle import apiVar
 
 from ..Model.RefVector import RefVector
 
@@ -36,9 +36,9 @@ class View:
             
         self.onUpdateTime(time)
 
-    def drawRect(self, color, rect, width = 0):
+    def drawRect(self, color, rect):
         cvrt=(rect[0]+self.absRefVec.lt[0],rect[1]+self.absRefVec.lt[1],rect[2],rect[3]) 
-        gameapi.draw.rect(self.scene.window, color, cvrt, width)
+        gameapi.draw.rect(self.scene.window, color, cvrt)
         #gameapi.draw.rect(self.surface, color, rect)
 
     def drawChar(self, string, offset, fontObj):
@@ -47,14 +47,9 @@ class View:
         self.scene.window.blit(tmp, cvrt)
 
     def drawResizeImage(self, image, rect):
-        surf = gameapi.transform.scale(image, (int(rect[2]),int(rect[3])))
-        cvrt = (rect[0]+self.absRefVec.lt[0], rect[1]+self.absRefVec.lt[1])
-        self.scene.window.blit(surf,cvrt)
-
-    def drawImage(self, image, lt):
-        cvrt = (lt[0]+self.absRefVec.lt[0], lt[1]+self.absRefVec.lt[1])
-        self.scene.window.blit(image, cvrt)
-        
+            surf = gameapi.transform.scale(image, (int(rect[2]),int(rect[3])))
+            cvrt = (rect[0]+self.absRefVec.lt[0], rect[1]+self.absRefVec.lt[1])
+            self.scene.window.blit(surf,cvrt)
             
     def fill(self, color):
         self.scene.window.fill(color)
