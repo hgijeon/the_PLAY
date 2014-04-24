@@ -59,8 +59,8 @@ class pianoKey ():
             return
         
         for i in range (length - 1):
-            if (keyList[i+1].startTime > offEvents[i].startTime):
-                keyList[i].endTime = offEvents[i].startTime
+            #if (keyList[i+1].startTime > offEvents[i].startTime):
+            keyList[i].endTime = offEvents[i].startTime
         keyList[-1].endTime = offEvents[-1].startTime
 
     def getData(self, pitch, playtime = None):
