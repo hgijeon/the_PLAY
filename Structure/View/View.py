@@ -54,8 +54,8 @@ class View:
     def drawImage(self, image, lt):
         cvrt = (lt[0]+self.absRefVec.lt[0], lt[1]+self.absRefVec.lt[1])
         self.scene.window.blit(image, cvrt)
+    
         
-            
     def fill(self, color):
         self.scene.window.fill(color)
 
