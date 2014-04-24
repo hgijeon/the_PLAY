@@ -28,7 +28,8 @@ class GameScene(Scene):
         self.blackDot = gameapi.image.load(os.path.join("Image","black dot.png"))
         self.whiteDot = gameapi.image.load(os.path.join("Image","white dot.png"))
 
-        self.playTime = 0
+        self.midiCurTime = self.startTimeOffset
+        print("midi current time: %.2f"%self.midiCurTime)
         self.play = True
 
         self.pianoKeyObserver = []
@@ -37,7 +38,7 @@ class GameScene(Scene):
         key = pianoKey(path)
         key.scene = self
 
-        self.midiEndTime = key.endTime + self.startTimeOffset - self.endTimeOffset
+        self.midiEndTime = key.endTime + self.endTimeOffset
 
         for e in self.pianoKeyObserver:
             e.setMiddle(key)
@@ -45,8 +46,8 @@ class GameScene(Scene):
 
     def setDotSpeed(self, pixelPerSecond):
         self.dotSpeed = pixelPerSecond
-        self.startTimeOffset = (self.lineY - self.dotStartY) / pixelPerSecond
-        self.endTimeOffset = (self.lineY - self.dotEndY) / pixelPerSecond
+        self.startTimeOffset = (self.dotStartY - self.lineY) / pixelPerSecond
+        self.endTimeOffset = (self.dotEndY - self.lineY) / pixelPerSecond
     
     def initMainView(self):
         self.mainView = GameScreenView(self, None, (1000, 1000))
@@ -54,12 +55,12 @@ class GameScene(Scene):
     def updateTime(self, time):
         try:
             if self.play:
-                self.playTime += time - self.prevTime
+                self.midiCurTime += time - self.prevTime
         except:
             self.prevTime = time
         self.prevTime = time
 
-        if self.playTime > self.midiEndTime:
+        if self.midiCurTime > self.midiEndTime:
             print("MIDI end")
             self.sceneManager.setSelectScene()
 
