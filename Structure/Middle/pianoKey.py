@@ -66,7 +66,7 @@ class pianoKey ():
         length = len(keyList)
         eventsToBeRemoved = []
         for i in range (0,length-1):
-            if keyList[i+1].startTime <= keyList[i].endTime:
+            if keyList[i+1].startTime < keyList[i].endTime:
                 keyList[i].endTime = keyList[i+1].endTime
                 eventsToBeRemoved.append(i)
         length = len(eventsToBeRemoved)
