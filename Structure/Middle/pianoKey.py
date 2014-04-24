@@ -30,6 +30,7 @@ class pianoKey ():
             self.keyList[i] = self.createDots(onEvents)
             offEvents = song.checkForEvent(i, 0x00)
             self.addEndTimesToDots(offEvents, self.keyList[i])
+            self.mergeSameEvents(self.keyList[i])
         self.endTime = song.endTime
 
     def check(self, pitch):
@@ -56,12 +57,23 @@ class pianoKey ():
     def addEndTimesToDots(self, offEvents, keyList):
         length = len(offEvents)
         if length == 0:
-            return
-        
+            return        
         for i in range (length - 1):
-            #if (keyList[i+1].startTime > offEvents[i].startTime):
             keyList[i].endTime = offEvents[i].startTime
         keyList[-1].endTime = offEvents[-1].startTime
+
+    def mergeSameEvents(self, keyList):
+        length = len(keyList)
+        eventsToBeRemoved = []
+        for i in range (0,length-1):
+            if keyList[i+1].startTime <= keyList[i].endTime:
+                keyList[i].endTime = keyList[i+1].endTime
+                eventsToBeRemoved.append(i)
+        length = len(eventsToBeRemoved)
+        i = length - 1
+        while (i>=0):
+            keyList.pop(eventsToBeRemoved[i]+1)
+            i = i-1
 
     def getData(self, pitch, playtime = None):
         if playtime == None:
