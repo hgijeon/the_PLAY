@@ -1,4 +1,5 @@
 import pygame as gameapi
+import pygame.midi as piano
 import sys, random
 import pygame.locals as apiVar
 
@@ -38,6 +39,14 @@ while True:
 
     mouseposSurfaceObj = fontObj.render(mouseposMsg, True, randomColor)
     windowSurfaceObj.blit(mouseposSurfaceObj, (mousex, mousey))
+
+    piano.init()
+    midiInput = piano.Input(piano.get_default_input_id())
+
+    while midiInput.poll():
+        midiEvents = piano.Input.read(1)
+        
+        piano.midi2events(MidiEvents)
     
     for event in gameapi.event.get():
         if event.type == apiVar.QUIT:
@@ -54,6 +63,12 @@ while True:
                 gameapi.event.post(gameapi.event.Event(QUIT))
             else:
                 keypressMsg = str(event.key)
+        elif event.type == api.Var.MIDIIN:
+            print (event.data1)
+            print (event.data2)
+            print (event.data3)
+            print (event.timestamp)
+            print (event.vice_id)
 
     gameapi.display.update()
     fpsClock.tick(30)
