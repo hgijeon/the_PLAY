@@ -17,7 +17,7 @@ class StartScreenView(View):
 
     def onUpdateTime(self, time):
         if self.keyMiddle.check(self.keyMiddle.key['a']):
-            print("hey")
+            self.scene.sceneManager.setSelectScene()
             
     #def buttonPressed(self)
      #   start_button = pygame.image.load("Image\start_game_pressed.png")
