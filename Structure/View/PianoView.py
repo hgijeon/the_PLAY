@@ -18,8 +18,6 @@ class PianoView(View):
             self.addOneOctaveView((self.scene.octWidth * (octave-4),0),  12 + 12*octave)
             
 
-    def onEvent(self, event):
-        self.middle.updateStatus(event)
 
         
     def onDraw(self):

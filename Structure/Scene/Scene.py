@@ -7,6 +7,8 @@ class Scene:
         self.sceneManager = sceneManager
         self.window = window
 
+        self.setKeyMiddle()
+
         self.initModel()
         self.initMainView()
         print(self.__class__.__name__)
@@ -24,8 +26,14 @@ class Scene:
         if event.type == apiVar.QUIT:
             gameapi.quit()
             sys.exit()
-            
-        self.mainView.event(event)
+
+        if event.type == apiVar.KEYDOWN or event.type == apiVar.KEYUP:
+            self.keyMiddle.updateStatus(event) # prevent double update
+        else:
+            self.mainView.event(event)
 
     def updateTime(self, time):
         self.mainView.updateTime(time)
+
+    def setKeyMiddle(self):
+        self.keyMiddle = self.sceneManager.keyMiddle

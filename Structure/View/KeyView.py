@@ -22,7 +22,7 @@ class KeyView(View):
         if self.prevTime == None:
             self.prevTime = time
         self.updateDots()
-        if self.middle.check(self.pitch):
+        if self.keyMiddle.check(self.pitch):
             self.pressTime = time
             if self.score == None:
                 self.score = 0

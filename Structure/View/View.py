@@ -12,6 +12,8 @@ class View:
         self.offsetRefVec = offsetRefVec
         #self.surface = gameapi.Surface(wh, apiVar.SRCALPHA)
 
+        self.setKeyMiddle()
+
         self.onInit()
         
 
@@ -47,9 +49,13 @@ class View:
         self.scene.window.blit(tmp, cvrt)
 
     def drawResizeImage(self, image, rect):
-        surf = gameapi.transform.scale(image, (int(rect[2]),int(rect[3])))
+        surf = gameapi.transform.smoothscale(image, (int(rect[2]),int(rect[3])))
         cvrt = (rect[0]+self.absRefVec.lt[0], rect[1]+self.absRefVec.lt[1])
         self.scene.window.blit(surf,cvrt)
+
+    def resizeImage(self, image, wh):
+        surf = gameapi.transform.smoothscale(image, (int(wh[0]),int(wh[1])))
+        return surf
 
     def drawImage(self, image, lt):
         cvrt = (lt[0]+self.absRefVec.lt[0], lt[1]+self.absRefVec.lt[1])
@@ -69,3 +75,6 @@ class View:
 
     def onUpdateTime(self, time):
         pass
+
+    def setKeyMiddle(self):
+        self.keyMiddle = self.scene.sceneManager.keyMiddle

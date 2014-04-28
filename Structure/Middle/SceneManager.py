@@ -1,14 +1,16 @@
 from ..Scene.GameScene import GameScene
 from ..Scene.SelectScene import SelectScene
-
+from .KeyMiddle import KeyMiddle
 
 class SceneManager:
     def __init__(self, startSceneClass, window, tkroot = None):
-
+        self.keyMiddle = KeyMiddle()
         self.tkroot = tkroot
         self.startWindow = window
+
         scene = startSceneClass(self, window)
         self.sceneStack = [scene]
+
 
         
     def getScene(self):

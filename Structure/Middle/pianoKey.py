@@ -8,17 +8,6 @@ from .MIDI.constants import *
 from .MIDI.Song import Song
 from ..Model.Dot import Dot
 
-key = {
-    'a':60,
-    'w':61,
-    's':62,
-    'e':63,
-    'd':64,
-    'f':65,
-    't':66,
-    'g':67,
-    }
-status = [False] * 128
 
 class pianoKey ():
     
@@ -33,17 +22,6 @@ class pianoKey ():
             self.mergeSameEvents(self.keyList[i])
         self.endTime = song.endTime
 
-    def check(self, pitch):
-        return status[pitch]
-
-    def updateStatus(self, event):
-        try:
-            if event.type == apiVar.KEYDOWN:
-                status[key[gameapi.key.name(event.key)]] = True
-            elif event.type == apiVar.KEYUP:
-                status[key[gameapi.key.name(event.key)]] = False
-        except:
-            print("not supported key")
         
     def createDots (self, onEvents):
         length = len(onEvents)

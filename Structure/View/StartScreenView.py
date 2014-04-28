@@ -1,17 +1,24 @@
 from .View import *
+import os
 
 class StartScreenView(View):
     def onInit(self):
-        self.red = gameapi.Color(255,0,0)        
+        self.red = gameapi.Color(255,0,0)
+        self.background = self.resizeImage(gameapi.image.load(os.path.join("Image","piano-photo-1.jpg")), (800,600))
+        self.start_button = self.resizeImage(gameapi.image.load(os.path.join("Image","start_game.png")), (120, 120))
+        
 
     def onDraw(self):
-        start_button = gameapi.image.load("Image\start_game.png")
-        background = gameapi.image.load("Image\piano-photo-1.jpg")
-        rect = (0,0,800,600)
-        self.drawResizeImage (background, rect)
-        rect = (350,400,120,120)
-        self.drawResizeImage (start_button, rect)
+        leftTop = (0,0)
+        self.drawImage (self.background, leftTop)
+        leftTop = (350,400)
+        self.drawImage (self.start_button, leftTop)
 
+
+    def onUpdateTime(self, time):
+        if self.keyMiddle.check(self.keyMiddle.key['a']):
+            print("hey")
+            
     #def buttonPressed(self)
      #   start_button = pygame.image.load("Image\start_game_pressed.png")
       #  rect = (400,300,30,30)
