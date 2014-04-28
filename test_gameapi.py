@@ -18,6 +18,16 @@ fontObj = gameapi.font.Font('freesansbold.ttf', 32)
 
 mouseposMsg = ""
 keypressMsg = "asdfasdfasdf"
+
+piano.init()
+piano_id = piano.get_default_input_id()
+print (piano_id)
+print(piano.get_device_info(piano_id))
+midiInput = piano.Input(piano_id)
+
+
+gameapi.fastevent.init()
+
 while True:
     windowSurfaceObj.fill(greenColor)
     randomColor = gameapi.Color(random.randint(0,255),random.randint(0,255),random.randint(0,255))
@@ -40,18 +50,23 @@ while True:
     mouseposSurfaceObj = fontObj.render(mouseposMsg, True, randomColor)
     windowSurfaceObj.blit(mouseposSurfaceObj, (mousex, mousey))
 
-    piano.init()
-    midiInput = piano.Input(piano.get_default_input_id())
 
     while midiInput.poll():
-        midiEvents = piano.Input.read(1)
-        
-        piano.midi2events(MidiEvents)
+        midiEvents = midiInput.read(10)
+        for e in piano.midis2events(midiEvents, piano_id):
+            gameapi.fastevent.post(e)
     
-    for event in gameapi.event.get():
+    for event in gameapi.fastevent.get():
         if event.type == apiVar.QUIT:
             gameapi.quit()
             sys.exit()
+        elif event.type == piano.MIDIIN:
+            print (event.data1)
+            print (event.data2)
+            print (event.data3)
+            print (event.timestamp)
+            print (event.vice_id)
+            
         elif event.type == apiVar.MOUSEMOTION:
             mousex, mousey = event.pos
             mouseposMsg = str((mousex, mousey))
@@ -60,15 +75,10 @@ while True:
             if event.key in (apiVar.K_LEFT, apiVar.K_RIGHT, apiVar.K_UP, apiVar.K_DOWN):
                 keypressMsg = 'Arrow key pressed'
             elif event.key == apiVar.K_ESCAPE:
-                gameapi.event.post(gameapi.event.Event(QUIT))
+                gameapi.event.post(gameapi.event.Event(apiVar.QUIT))
             else:
                 keypressMsg = str(event.key)
-        elif event.type == api.Var.MIDIIN:
-            print (event.data1)
-            print (event.data2)
-            print (event.data3)
-            print (event.timestamp)
-            print (event.vice_id)
+        
 
     gameapi.display.update()
     fpsClock.tick(30)
