@@ -3,8 +3,7 @@ from ..Middle import apiVar
 
 import pygame.midi as midi
 
-midiDown = 144
-midiUp = 128
+
 
 class KeyMiddle ():
     def __init__(self):
@@ -32,9 +31,9 @@ class KeyMiddle ():
                 self.status[self.key[gameapi.key.name(event.key)]] = False
             elif event.type == midi.MIDIIN:
                 # print(event)
-                if event.status == midiDown:
+                if ((event.status >> 4) & 0xf) == 9: # 1001xxxx = on
                     self.status[event.data1] = True
-                elif event.status == midiUp:
+                elif ((event.status >> 4) & 0xf) == 8: # 1000xxxx = off
                     self.status[event.data1] = False
         except:
             print("not supported key")
