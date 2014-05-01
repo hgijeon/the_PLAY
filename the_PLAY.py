@@ -1,5 +1,6 @@
 from Structure.Middle import gameapi
 from Structure.Middle import apiVar
+import pygame.midi as midi
 
 import tkinter as tk
 from sys import platform as _platform
@@ -37,7 +38,19 @@ class the_PLAY:
             print("cannot support '%s'."% _platform)
 
         gameapi.init()
+        gameapi.fastevent.init()
         fontObj = gameapi.font.Font('freesansbold.ttf', 64)
+
+        try:
+            midi.init()
+            piano_id = midi.get_default_input_id()
+            print(midi.get_device_info(piano_id))
+            midiInput = midi.Input(piano_id)
+            midiConnect = True
+            print("MIDI connection complete")
+        except:
+            midiConnect = False
+            print("MIDI connection failed")
 
         mainWindow = gameapi.display.set_mode((800, 600))
         gameapi.display.set_caption('the_PLAY')
@@ -55,8 +68,14 @@ class the_PLAY:
             
             currentScene = sceneManager.getScene()
 
+            if(midiConnect):
+                while midiInput.poll():
+                    midiEvents = midiInput.read(10)
+                    for e in midi.midis2events(midiEvents, piano_id):
+                        gameapi.fastevent.post(e)
+
             currentScene.updateTime(startTime)
-            for event in gameapi.event.get():
+            for event in gameapi.fastevent.get():
                 currentScene.event(event)
 
             currentScene.draw()

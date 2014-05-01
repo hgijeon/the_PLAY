@@ -61,11 +61,14 @@ while True:
             gameapi.quit()
             sys.exit()
         elif event.type == piano.MIDIIN:
+            print(event)
+            '''
             print (event.data1)
             print (event.data2)
             print (event.data3)
             print (event.timestamp)
             print (event.vice_id)
+            '''
             
         elif event.type == apiVar.MOUSEMOTION:
             mousex, mousey = event.pos

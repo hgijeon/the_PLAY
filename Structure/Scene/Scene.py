@@ -1,5 +1,7 @@
 from ..Middle import gameapi
 from ..Middle import apiVar
+import pygame.midi as midi
+
 import sys
 
 class Scene:
@@ -27,7 +29,7 @@ class Scene:
             gameapi.quit()
             sys.exit()
 
-        if event.type == apiVar.KEYDOWN or event.type == apiVar.KEYUP:
+        if event.type == apiVar.KEYDOWN or event.type == apiVar.KEYUP or event.type == midi.MIDIIN:
             self.keyMiddle.updateStatus(event) # prevent double update
         else:
             self.mainView.event(event)
