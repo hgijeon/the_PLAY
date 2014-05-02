@@ -46,7 +46,7 @@ class HighScore:
 class Song:
     def __init__(self):
         self.name = "no name"
-        self.slotList = []
+        self.slotList = dummySlotList()
 
 
         
@@ -60,20 +60,21 @@ class Song:
             tmp.set(dataList[i*2+1], int(dataList[i*2+2]))
             self.slotList.append(tmp)
 
-    def place(self, num):
-        try:
-            ret = self.slotList[num]
-        except:
-            ret = slot()
-            ret.set("Hyeon-Gi Henry Jeon", "hgijeon@gmail.com")
-        return ret
-
     def __str__(self):
         ret = self.name+"\n"
         for e in self.slotList:
             ret += str(e)+"\n"
         return ret
-            
+
+class dummySlotList(list):
+    def __getitem__(self, index):
+        try:
+            ret = super().__getitem__(index)
+        except:
+            ret = slot()
+            ret.set("Hyeon-Gi Henry Jeon", "hgijeon@gmail.com")
+        return ret
+        
 
 class slot:
     def __init__(self):
