@@ -14,6 +14,23 @@ from Structure.Scene.GameScene import GameScene
 from Structure.Scene.SelectScene import SelectScene
 from Structure.Scene.StartScene import StartScene
 
+def windowScreen():
+    return gameapi.display.set_mode((800, 600), gameapi.DOUBLEBUF|gameapi.HWSURFACE)#|gameapi.FULLSCREEN) #gameapi.NOFRAME|gameapi.DOUBLEBUF|gameapi.RESIZABLE)
+
+def fullScreen():
+    return gameapi.display.set_mode((800, 600), gameapi.DOUBLEBUF|gameapi.HWSURFACE|gameapi.FULLSCREEN)
+
+windowed=True
+def toggleScreen():
+    global windowed
+    
+    if windowed:
+        fullScreen()
+        windowed = not windowed
+    else:
+        windowScreen()
+        windowed = not windowed
+
 class the_PLAY:
     def __init__(self):
         self.main()
@@ -52,7 +69,7 @@ class the_PLAY:
             midiConnect = False
             print("MIDI connection failed")
 
-        mainWindow = gameapi.display.set_mode((800, 600))
+        mainWindow = windowScreen()
         gameapi.display.set_caption('the_PLAY')
         sceneManager = SceneManager.SceneManager(StartScene, mainWindow, tkroot)
 
@@ -76,6 +93,11 @@ class the_PLAY:
 
             currentScene.updateTime(startTime)
             for event in gameapi.fastevent.get():
+                if event.type == apiVar.KEYDOWN:
+                    if event.key == apiVar.K_ESCAPE:
+                        gameapi.event.post(gameapi.event.Event(apiVar.QUIT))
+                    elif event.key == apiVar.K_RETURN:
+                        toggleScreen()
                 currentScene.event(event)
 
             currentScene.draw()
