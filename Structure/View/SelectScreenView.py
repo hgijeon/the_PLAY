@@ -11,7 +11,18 @@ class SelectScreenView(View):
         self.easy_background = self.resizeImage(gameapi.image.load(os.path.join("Image","easy_background.jpg")), (800,600))
         self.normal_background = self.resizeImage(gameapi.image.load(os.path.join("Image","normal_background.jpg")), (800,600))
         self.hard_background = self.resizeImage(gameapi.image.load(os.path.join("Image","hard_background.jpg")), (800,600))
-        self.icon_twinkle = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
+        self.icon_pressed = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (200,200))
+        self.icon_unpressed = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (200,200))
+        self.title1 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
+        self.title2 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))        
+        self.title3 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
+        self.title4 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
+        self.title5 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
+        self.title6 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
+        self.title7 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
+        self.title8 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
+        self.title9 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
+
         self.mode = 1
         self.icon = 0
         
@@ -22,40 +33,33 @@ class SelectScreenView(View):
         if self.mode == 1:
             leftTop = (0,0)
             self.drawImage (self.easy_background, leftTop)
-            #draw icons
-            leftTop = (350,400)
-            self.drawImage (self.icon_twinkle, leftTop)
-
+            
         elif self.mode == 2:
             leftTop = (0,0)
             self.drawImage (self.normal_background, leftTop)
-            #draw icons
-            leftTop = (350,400)
-            self.drawImage (self.icon_twinkle, leftTop)
-
+            
         elif self.mode == 3:
             leftTop = (0,0)
             self.drawImage (self.hard_background, leftTop)
-            #draw icons
-            leftTop = (350,400)
-            self.drawImage (self.icon_twinkle, leftTop)
-        
+
+        self.drawIcons()
+                    
     def onUpdateTime(self, time):
         if self.fileSelected:
             self.scene.sceneManager.pushGameScene(self.scene.filename)
-        if self.keyMiddle.check(self.keyMiddle.key['w']):
+        if self.keyMiddle.check(self.keyMiddle.key['2']):
             self.mode = 1
-        elif self.keyMiddle.check(self.keyMiddle.key['e']):
+        elif self.keyMiddle.check(self.keyMiddle.key['3']):
             self.mode = 2
-        elif self.keyMiddle.check(self.keyMiddle.key['t']):
+        elif self.keyMiddle.check(self.keyMiddle.key['5']):
             self.mode = 3
-        elif self.keyMiddle.check(self.keyMiddle.key['a']):
+        elif self.keyMiddle.check(self.keyMiddle.key['q']):
             self.icon = 1
             self.fileopen()            
-        elif self.keyMiddle.check(self.keyMiddle.key['s']):
+        elif self.keyMiddle.check(self.keyMiddle.key['w']):
             self.icon = 2
             self.fileopen()            
-        elif self.keyMiddle.check(self.keyMiddle.key['d']):
+        elif self.keyMiddle.check(self.keyMiddle.key['e']):
             self.icon = 3
             self.fileopen()   
 
@@ -90,3 +94,37 @@ class SelectScreenView(View):
                 self.scene.filename = "Midi/Music/Twinkle Twinkle Little Star.mid"
 
         self.fileSelected = True
+
+    def drawIcons(self)
+        leftTop = (0,300)
+        self.drawImage (self.icon_unpressed, leftTop)
+        leftTop = (200,300)
+        self.drawImage (self.icon_unpressed, leftTop)
+        leftTop = (400,300)
+        self.drawImage (self.icon_unpressed, leftTop)
+        if self.icon == 1:
+            leftTop = (0,300)
+            self.drawImage (self.icon_pressed, leftTop)
+        elif self.icon == 2:
+            leftTop = (200,300)
+            self.drawImage (self.icon_pressed, leftTop)
+        elif self.icon == 3:
+            leftTop = (400,300)
+            self.drawImage (self.icon_pressed, leftTop)
+
+        if self.mode == 1:
+            leftTop = (0,500)
+            self.drawImage (self.title1, leftTop)
+            leftTop = (0,500)
+            self.drawImage (self.title1, leftTop)
+
+        if self.mode == 2:
+            leftTop = (0,500)
+            self.drawImage (self.title1, leftTop)
+        if self.mode == 3:
+            leftTop = (0,500)
+            self.drawImage (self.title1, leftTop)
+
+
+
+            
