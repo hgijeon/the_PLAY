@@ -62,7 +62,7 @@ class GameScene(Scene):
 
         if self.playTime > self.midiEndTime:
             print("MIDI end")
-            self.sceneManager.setRankingScene(self.filepath)
+            self.sceneManager.setRankingScene(self.filepath, self.score)
 
         super().updateTime(time)
         

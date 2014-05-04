@@ -27,9 +27,9 @@ class SceneManager:
         scene = SelectScene(self, self.startWindow)
         self.sceneStack[-1] = scene
 
-    def setRankingScene(self, filepath):
+    def setRankingScene(self, filepath, score):
         scene = RankingScene(self, self.startWindow)
-        scene.setFile(filepath)
+        scene.setTarget(filepath,score)
         self.sceneStack[-1] = scene
     
         

@@ -5,7 +5,7 @@ class HighScore:
     def __init__(self):
         self.songs = []
         
-    def readFile(self, filename = "highscore.dat"):
+    def loadFile(self, filename = "highscore.dat"):
         with open(filename, 'r') as f:
             self.filename = filename
             r = f.read().strip()
@@ -40,10 +40,28 @@ class HighScore:
             ret += str(e)
             ret += "--\n"
         return ret
+
+    def getTarget(self, name, score):
+        try:
+            index = self.songs.index(name)
+            song = self.songs[index]
+        except ValueError:
+            song = Song()
+            song.name = name
+            self.songs.append(song)
+
+        rank = 0
+        
+        song.slotList.insert(rank, slot().set("",score))
+        return (song, rank)
+            
         
 
 
 class Song:
+    def __eq__(self, value):
+        return value == self.name
+    
     def __init__(self):
         self.name = "no name"
         self.slotList = dummySlotList()
@@ -84,11 +102,13 @@ class slot:
         self.name = name
         self.score = score
 
+        return self
+
     def __str__(self):
         return self.name+": "+str(self.score)
 
 
 if __name__ == "__main__":
-    tmp = HighScore().readFile()
+    tmp = HighScore().loadFile()
     print(tmp)
     tmp.saveFile()
