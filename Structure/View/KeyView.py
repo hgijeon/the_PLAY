@@ -62,9 +62,14 @@ class KeyView(View):
                 if dot.info[0] > lineY and dot.info[1] < lineY :
                     color = (128,0,0)
                     self.act = True
+                    image = self.dotImage
+                else:
+                    image = self.lineDotImage
+
+                left, right = self.getDotLeftRight()
                     
-                rect = (10, dot.info[1], self.width-20, dot.info[0] - dot.info[1])
-                self.drawResizeImage(self.dotImage, rect)
+                rect = (left, dot.info[1], right, dot.info[0] - dot.info[1])
+                self.drawResizeImage(image, rect)
                 
                 ''' draw rectangle
                 self.drawRect(color, rect)
