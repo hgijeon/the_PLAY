@@ -20,4 +20,4 @@ class WhiteKeyView(KeyView):
 
     
     def getDotLeftRight(self):
-        return (10, self.width - 20)
+        return (5, self.width - 10)

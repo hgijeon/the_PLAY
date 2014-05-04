@@ -62,9 +62,9 @@ class KeyView(View):
                 if dot.info[0] > lineY and dot.info[1] < lineY :
                     color = (128,0,0)
                     self.act = True
-                    image = self.dotImage
-                else:
                     image = self.lineDotImage
+                else:
+                    image = self.dotImage
 
                 left, right = self.getDotLeftRight()
                     

@@ -18,4 +18,4 @@ class BlackKeyView(KeyView):
         self.drawBar()
 
     def getDotLeftRight(self):
-        return (0, self.width)
+        return (5, self.width - 10)
