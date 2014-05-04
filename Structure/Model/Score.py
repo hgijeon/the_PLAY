@@ -15,7 +15,7 @@ class HighScore:
         with open(filename, 'r') as f:
             self.filename = filename
             r = f.read().strip()
-            eachSong = r.split("\n\n")
+            eachSong = r.split("\n\n\n")
             
             for songData in eachSong:
                 tmp = Song()
@@ -35,7 +35,7 @@ class HighScore:
                 lines.append(s.name+"\n")
                 for l in s.slotList:
                     lines.append(l.name+"\n"+str(l.score)+"\n")
-                lines.append("\n")
+                lines.append("\n\n")
             f.writelines(lines)
         return self
             
