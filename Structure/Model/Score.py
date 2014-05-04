@@ -51,6 +51,11 @@ class HighScore:
             self.songs.append(song)
 
         rank = 0
+        for e in song.slotList:
+            if e.score > score:
+                rank += 1
+            else:
+                break
         
         song.slotList.insert(rank, slot().set("",score))
         return (song, rank)
@@ -78,6 +83,9 @@ class Song:
             tmp.set(dataList[i*2+1], int(dataList[i*2+2]))
             self.slotList.append(tmp)
 
+        self.slotList.sort()
+        self.slotList.reverse()
+
     def __str__(self):
         ret = self.name+"\n"
         for e in self.slotList:
@@ -97,6 +105,15 @@ class dummySlotList(list):
 class slot:
     def __init__(self):
         self.set("blank", 0)
+
+    def __lt__(self, right):
+        return self.score < right.score
+    def __le__(self, right):
+        return self.score <= right.score
+    def __gt__(self, right):
+        return self.score > right.score
+    def __ge__(self, right):
+        return self.score >= right.score
 
     def set(self, name, score):
         self.name = name
