@@ -67,4 +67,14 @@ class KeyMiddle ():
                     self.status[event.data1] = False
         except:
             print("not supported key")
+
+    def getPressedPitch(self, event):
+        try:
+            if event.type == apiVar.KEYDOWN:
+                return self.key[gameapi.key.name(event.key)]
+            elif event.type == midi.MIDIIN:
+                if ((event.status >> 4) & 0xf) == 9: # 1001xxxx = on
+                    return event.data1
+        except:
+            print("not supported key")
         

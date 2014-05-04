@@ -104,7 +104,7 @@ class dummySlotList(list):
             ret = super().__getitem__(index)
         except:
             ret = slot()
-            ret.set("Hyeon-Gi Henry Jeon", "hgijeon@gmail.com")
+            ret.set("Hyeon-Gi Henry Jeon", "github.com/jeonhk")
         return ret
         
 

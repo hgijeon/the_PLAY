@@ -30,9 +30,8 @@ class Scene:
             sys.exit()
 
         if event.type == apiVar.KEYDOWN or event.type == apiVar.KEYUP or event.type == midi.MIDIIN:
-            self.keyMiddle.updateStatus(event) # prevent double update
-        else:
-            self.mainView.event(event)
+            self.keyMiddle.updateStatus(event)
+        self.mainView.event(event)
 
     def updateTime(self, time):
         self.mainView.updateTime(time)

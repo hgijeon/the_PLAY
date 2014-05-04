@@ -22,7 +22,11 @@ class RankingScene(Scene):
         self.highScore = HighScore()
         self.highScore.loadFile()
 
-        (self.song, self.rank) = self.highScore.getTarget(filepath, score)
+        name = filepath.split('/')[-1]
+        last = name.rindex('.')
+        title = name[0:last]
+
+        (self.song, self.rank) = self.highScore.getTarget(title, score)
         if self.rank >= rankN:
             self.done()
 
@@ -32,6 +36,7 @@ class RankingScene(Scene):
 
     def done(self):
         self.highScore.saveFile()
+        self.rank = 999
         self.nameEntered = True
 
     def getSong(self):
