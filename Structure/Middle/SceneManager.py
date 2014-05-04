@@ -1,5 +1,6 @@
 from ..Scene.GameScene import GameScene
 from ..Scene.SelectScene import SelectScene
+from ..Scene.RankingScene import RankingScene
 from .KeyMiddle import KeyMiddle
 
 class SceneManager:
@@ -17,11 +18,18 @@ class SceneManager:
         return self.sceneStack[-1]
 
 
-    def pushGameScene(self, filename):
+    def pushGameScene(self, filepath):
         scene = GameScene(self, self.startWindow)
-        scene.setSong(filename)
+        scene.setSong(filepath)
         self.sceneStack[-1] = scene
 
     def setSelectScene(self):
         scene = SelectScene(self, self.startWindow)
         self.sceneStack[-1] = scene
+
+    def setRankingScene(self, filepath):
+        scene = RankingScene(self, self.startWindow)
+        scene.setFile(filepath)
+        self.sceneStack[-1] = scene
+    
+        

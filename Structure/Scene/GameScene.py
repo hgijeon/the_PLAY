@@ -34,6 +34,7 @@ class GameScene(Scene):
         self.pianoKeyObserver = []
 
     def setSong(self, path):
+        self.filepath = path
         key = pianoKey(path)
         key.scene = self
 
@@ -61,7 +62,7 @@ class GameScene(Scene):
 
         if self.playTime > self.midiEndTime:
             print("MIDI end")
-            self.sceneManager.setSelectScene()
+            self.sceneManager.setRankingScene(self.filepath)
 
         super().updateTime(time)
         
