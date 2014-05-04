@@ -5,7 +5,13 @@ class HighScore:
     def __init__(self):
         self.songs = []
         
-    def loadFile(self, filename = "highscore.dat"):
+    def loadFile(self, filename = "highscore.txt"):
+        try:
+            open(filename, 'r').close()
+        except FileNotFoundError:
+            open(filename, 'w').close()
+            
+        
         with open(filename, 'r') as f:
             self.filename = filename
             r = f.read().strip()
