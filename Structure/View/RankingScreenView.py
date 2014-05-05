@@ -28,7 +28,7 @@ class RankingScreenView(View):
             self.drawChar(score, (0, 100 + 50*i), self.scene.font, color)
             self.drawChar(str(song.slotList[i].name), (400, 100 + 50*i), self.scene.font, color)
         
-        self.drawImage (self.keyHelp, (0,350))
+        self.drawImage (self.keyHelp, (0,400))
 
     def onEvent(self, event):
         if event.type == apiVar.KEYDOWN or event.type == midi.MIDIIN:

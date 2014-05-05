@@ -7,7 +7,7 @@ import os
 
 class GameScene(Scene):
     def initModel(self):
-        self.dotStartY = -300
+        self.dotStartY = -330
         self.lineY = 0
         self.dotEndY = 150
         self.setDotSpeed(100)
@@ -16,14 +16,14 @@ class GameScene(Scene):
         self.score = 0
 
         self.octWidth = 266
-        self.octHeight = 300
+        self.octHeight = 270
         tmp = gameapi.image.load(os.path.join("Image","1_octive_black.png"))
         self.octaveImg = gameapi.transform.scale(tmp, (self.octWidth, self.octHeight))
 
         self.whiteWidth = self.octWidth/7
         self.whiteHeight = self.octHeight
         self.blackWidth = self.octWidth * 0.095
-        self.blackHeight = self.octHeight * 0.68
+        self.blackHeight = self.octHeight * 0.6
 
         self.blackDot = gameapi.image.load(os.path.join("Image","black dot.png"))
         self.lineBlackDot = gameapi.image.load(os.path.join("Image","line black dot.png"))
