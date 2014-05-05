@@ -22,8 +22,9 @@ keypressMsg = "asdfasdfasdf"
 piano.init()
 piano_id = piano.get_default_input_id()
 print (piano_id)
-print(piano.get_device_info(piano_id))
-midiInput = piano.Input(piano_id)
+print (piano.get_count())
+print(piano.get_device_info(3))
+midiInput = piano.Input(3)
 
 
 gameapi.fastevent.init()

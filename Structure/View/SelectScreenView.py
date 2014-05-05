@@ -72,25 +72,25 @@ class SelectScreenView(View):
         print (self.icon)
         if self.mode == 1:
             if self.icon == 1:
-                self.scene.filename = "Midi/Music/Twinkle Twinkle Little Star.mid"
+                self.scene.filename = "MIDI/Music/Twinkle Twinkle Little Star.mid"
             elif self.icon == 2:
-                self.scene.filename = "Midi/Music/minimal.mid"
+                self.scene.filename = "MIDI/Music/minimal.mid"
             elif self.icon == 3:
-                self.scene.filename = "Midi/Music/Twinkle Twinkle Little Star.mid"
+                self.scene.filename = "MIDI/Music/Twinkle Twinkle Little Star.mid"
         if self.mode == 2:
             if self.icon == 1:
-                self.scene.filename = "Midi/Music/Twinkle Twinkle Little Star.mid"
+                self.scene.filename = "MIDI/Music/Twinkle Twinkle Little Star.mid"
             elif self.icon == 2:
-                self.scene.filename = "Midi/Music/minimal.mid"
+                self.scene.filename = "MIDI/Music/minimal.mid"
             elif self.icon == 3:
-                self.scene.filename = "Midi/Music/Twinkle Twinkle Little Star.mid"
+                self.scene.filename = "MIDI/Music/Twinkle Twinkle Little Star.mid"
         if self.mode == 3:
             if self.icon == 1:
-                self.scene.filename = "Midi/Music/Twinkle Twinkle Little Star.mid"
+                self.scene.filename = "MIDI/Music/Twinkle Twinkle Little Star.mid"
             elif self.icon == 2:
-                self.scene.filename = "Midi/Music/minimal.mid"
+                self.scene.filename = "MIDI/Music/minimal.mid"
             elif self.icon == 3:
-                self.scene.filename = "Midi/Music/Twinkle Twinkle Little Star.mid"
+                self.scene.filename = "MIDI/Music/Twinkle Twinkle Little Star.mid"
 
         self.fileSelected = True
 
