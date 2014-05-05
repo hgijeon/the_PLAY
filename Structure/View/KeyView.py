@@ -17,6 +17,7 @@ class KeyView(View):
         self.barSurface = gameapi.Surface((self.width, height), apiVar.SRCALPHA)
 
         self.minusScoreColor = (random.randint(192,255),random.randint(64,127),random.randint(64,127),255)
+        self.plusScoreColor = (random.randint(64,127),random.randint(192,255),random.randint(64,127),255)
         
         self.downColor = (random.randint(64,127),random.randint(64,127),random.randint(196,255),255)
         
@@ -85,18 +86,25 @@ class KeyView(View):
                 self.drawRect(color, rect)
                 '''
 
-
-        if self.score != None:
-            self.drawScore()
-
     
 
-    def drawScore(self):
-        self.drawChar(str(int(self.score)), (0,-50), self.scene.scoreFont, (128, 50, 50))
+
+        
 
     def updateDots(self):
         self.dotList = self.middle.getData(self.pitch)
 
+
+    def drawScore(self):
+        if self.score != None:
+            if self.score < 0:
+                color = self.minusScoreColor
+                score = -self.score
+            else:
+                color = self.plusScoreColor
+                score = self.score
+            self.drawRect(color, (0, 0, self.width, self.height/20 * (score % 20)))
+        #        self.drawChar(str(int(self.score)), (0,-50), self.scene.scoreFont, (128, 50, 50))
 
 
         
