@@ -72,9 +72,14 @@ class KeyView(View):
                 
                 color = (0,0,128)
                 if dot.info[0] > lineY and dot.info[1] < lineY :
-                    color = (128,0,0)
                     self.act = True
-                    image = self.lineDotImage
+                    if self.keyMiddle.check(self.pitch):
+                        if random.randint(0,1) == 0:
+                            image = self.dotImage
+                        else:
+                            image = self.lineDotImage
+                    else:
+                        image = self.lineDotImage
                 else:
                     image = self.dotImage
 

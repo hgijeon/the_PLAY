@@ -51,6 +51,6 @@ class RankingScene(Scene):
             if self.doneTime == None:
                 self.doneTime = time
             elif time - self.doneTime > 5:
-                self.sceneManager.setSelectScene()
+                self.sceneManager.setStartScene()
                            
         super().updateTime(time)

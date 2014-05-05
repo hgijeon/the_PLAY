@@ -1,6 +1,7 @@
 from ..Scene.GameScene import GameScene
 from ..Scene.SelectScene import SelectScene
 from ..Scene.RankingScene import RankingScene
+from ..Scene.StartScene import StartScene
 from .KeyMiddle import KeyMiddle
 
 class SceneManager:
@@ -31,5 +32,8 @@ class SceneManager:
         scene = RankingScene(self, self.startWindow)
         scene.setTarget(filepath,score)
         self.sceneStack[-1] = scene
+
+    def setStartScene(self):
+        self.sceneStack[-1] = StartScene(self, self.startWindow)
     
         
