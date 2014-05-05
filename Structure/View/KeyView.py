@@ -1,6 +1,7 @@
 from .View import *
 from ..Model.Dot import Dot
 
+import random
 
 threshold = 0.3
 
@@ -10,9 +11,15 @@ class KeyView(View):
         self.pressTime = 0
         self.score = None
         self.prevTime = None
+        self.act = False
 
         height = self.scene.dotEndY - self.scene.dotStartY
         self.barSurface = gameapi.Surface((self.width, height), apiVar.SRCALPHA)
+
+        self.minusScoreColor = (random.randint(192,255),random.randint(64,127),random.randint(64,127),255)
+        
+        self.downColor = (random.randint(64,127),random.randint(64,127),random.randint(196,255),255)
+        
         
     
     def drawBar(self):
@@ -25,14 +32,17 @@ class KeyView(View):
         if self.keyMiddle.check(self.pitch):
             self.pressTime = time
             if self.score == None:
+                self.downColor = (random.randint(64,127),random.randint(64,127),random.randint(196,255),255)
                 self.score = 0
                 
             if self.act == True:
-                self.score += 1000*(time - self.prevTime)
-                pass
+                self.score += 100*(time - self.prevTime)
             else :
-                self.score -= 500*(time - self.prevTime)
-                pass
+                self.score -= 50*(time - self.prevTime)
+        elif self.act == True:
+            if self.score == None:
+                self.score = 0
+            self.score -= 10*(time - self.prevTime)
         else:
             if self.score != None:
                 self.scene.score += int(self.score)
@@ -82,7 +92,7 @@ class KeyView(View):
     
 
     def drawScore(self):
-        self.drawChar(str(int(self.score)), (0,200), self.scene.scoreFont)
+        self.drawChar(str(int(self.score)), (0,-50), self.scene.scoreFont, (128, 50, 50))
 
     def updateDots(self):
         self.dotList = self.middle.getData(self.pitch)

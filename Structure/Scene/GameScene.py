@@ -7,9 +7,9 @@ import os
 
 class GameScene(Scene):
     def initModel(self):
-        self.dotStartY = -300
-        self.lineY = 100
-        self.dotEndY = 300
+        self.dotStartY = -400
+        self.lineY = 0
+        self.dotEndY = 50
         self.setDotSpeed(150)
 
         self.scoreFont = gameapi.font.Font('freesansbold.ttf', 32)

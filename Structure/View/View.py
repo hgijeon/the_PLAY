@@ -53,6 +53,8 @@ class View:
         cvrt = (rect[0]+self.absRefVec.lt[0], rect[1]+self.absRefVec.lt[1])
         self.scene.window.blit(surf,cvrt)
 
+    
+
     def resizeImage(self, image, wh):
         surf = gameapi.transform.smoothscale(image, (int(wh[0]),int(wh[1])))
         return surf
