@@ -25,8 +25,8 @@ class RankingScreenView(View):
             else:
                 color = (181,211,59)
 
-            score = "%20s"%str(song.slotList[i].score)
-            self.drawChar(score, (0, 90 + 40*i), self.scene.font, color)
+            score = str(song.slotList[i].score)
+            self.drawCharRight(score, (440, 90 + 40*i), self.scene.font, color)
             self.drawChar(str(song.slotList[i].name), (400, 90 + 40*i), self.scene.font, color)
         
         self.drawImage (self.keyHelp, (0,400))

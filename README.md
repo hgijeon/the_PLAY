@@ -7,7 +7,8 @@ What it needs
 ========
 
 Python3, PyGame and Linux for using MIDI input<br />
-Check with command 'python3'
+Check with command 'python3'<br />
+Also, I highly recommend installing fonts: 'Comic Sans MS' and 'Consolas'
 
 How to install PyGame for Python3 in Ubuntu
 ========
