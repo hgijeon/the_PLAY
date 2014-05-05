@@ -89,8 +89,7 @@ class Song:
             tmp.set(dataList[i*2+1], int(dataList[i*2+2]))
             self.slotList.append(tmp)
 
-        self.slotList.sort()
-        self.slotList.reverse()
+        self.slotList.sort(reverse=True)
 
     def __str__(self):
         ret = self.name+"\n"
