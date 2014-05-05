@@ -74,9 +74,9 @@ class SelectScreenView(View):
             if self.icon == 1:
                 self.scene.filename = "Midi/Music/Twinkle Twinkle Little Star.mid"
             elif self.icon == 2:
-                self.scene.filename = "Midi/Music/minimal.mid"
+                self.scene.filename = "Midi/Music/happybirthday.mid"
             elif self.icon == 3:
-                self.scene.filename = "Midi/Music/Twinkle Twinkle Little Star.mid"
+                self.scene.filename = "Midi/Music/amazinggrace.mid"
         if self.mode == 2:
             if self.icon == 1:
                 self.scene.filename = "Midi/Music/Twinkle Twinkle Little Star.mid"
