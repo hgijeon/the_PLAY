@@ -7,23 +7,23 @@ import os
 
 class GameScene(Scene):
     def initModel(self):
-        self.dotStartY = -300
-        self.lineY = 100
-        self.dotEndY = 300
-        self.setDotSpeed(150)
+        self.dotStartY = -330
+        self.lineY = 0
+        self.dotEndY = 150
+        self.setDotSpeed(100)
 
-        self.scoreFont = gameapi.font.Font('freesansbold.ttf', 32)
+        self.scoreFont = gameapi.font.SysFont('Comic Sans MS', 100, bold = True)
         self.score = 0
 
         self.octWidth = 266
-        self.octHeight = 200
+        self.octHeight = 260
         tmp = gameapi.image.load(os.path.join("Image","1_octive_black.png"))
         self.octaveImg = gameapi.transform.scale(tmp, (self.octWidth, self.octHeight))
 
         self.whiteWidth = self.octWidth/7
         self.whiteHeight = self.octHeight
         self.blackWidth = self.octWidth * 0.095
-        self.blackHeight = self.octHeight * 0.68
+        self.blackHeight = self.octHeight * 0.6
 
         self.blackDot = gameapi.image.load(os.path.join("Image","black dot.png"))
         self.lineBlackDot = gameapi.image.load(os.path.join("Image","line black dot.png"))
@@ -33,6 +33,8 @@ class GameScene(Scene):
 
         self.playTime = 0
         self.play = True
+
+        self.updatingScore = 0
 
         self.pianoKeyObserver = []
 
@@ -56,6 +58,8 @@ class GameScene(Scene):
         self.mainView = GameScreenView(self, None, (1000, 1000))
 
     def updateTime(self, time):
+        self.updatingScore = 0
+        
         try:
             if self.play:
                 self.playTime += time - self.prevTime
@@ -65,7 +69,7 @@ class GameScene(Scene):
 
         if self.playTime > self.midiEndTime:
             print("MIDI end")
-            self.sceneManager.setRankingScene(self.filepath, self.score)
+            self.sceneManager.setRankingScene(self.filepath, int(self.score))
 
         super().updateTime(time)
         

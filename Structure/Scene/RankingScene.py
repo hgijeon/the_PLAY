@@ -7,7 +7,7 @@ rankN = 5
 
 class RankingScene(Scene):
     def initModel(self):
-        self.font = gameapi.font.Font('freesansbold.ttf', 32)        
+        self.font = gameapi.font.SysFont('consolas', 32, True)        
         self.filepath = None
         self.nameEntered = False
         self.doneTime = None
@@ -51,6 +51,6 @@ class RankingScene(Scene):
             if self.doneTime == None:
                 self.doneTime = time
             elif time - self.doneTime > 5:
-                self.sceneManager.setSelectScene()
+                self.sceneManager.setStartScene()
                            
         super().updateTime(time)

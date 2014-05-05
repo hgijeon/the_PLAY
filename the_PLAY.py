@@ -39,6 +39,8 @@ class the_PLAY:
         print ("asdfasdfasdfasdfasdf")
 
     def main(self):
+        tkroot = None
+        '''
         tkroot = tk.Tk() # using with tk
         tkroot.withdraw() # we don't want a full GUI, so keep the root window from appearing
         embed = tk.Frame(tkroot, width=100, height=100)
@@ -53,6 +55,7 @@ class the_PLAY:
             os.environ['SDL_VIDEODRIVER'] = 'windib'
         else:
             print("cannot support '%s'."% _platform)
+        '''
 
         gameapi.init()
         gameapi.fastevent.init()
@@ -60,7 +63,7 @@ class the_PLAY:
 
         try:
             midi.init()
-            piano_id = midi.get_default_input_id()
+            piano_id = 3
             print(midi.get_device_info(piano_id))
             midiInput = midi.Input(piano_id)
             midiConnect = True
@@ -101,7 +104,7 @@ class the_PLAY:
                 currentScene.event(event)
 
             currentScene.draw()
-            mainWindow.blit(fpsText, fpsText.get_rect())
+            #mainWindow.blit(fpsText, fpsText.get_rect())
             
             
             gameapi.display.flip()
@@ -120,8 +123,8 @@ class the_PLAY:
 
             if mod == 0:
                 minfps = min(frameAccu)*0.9
-                fpsText = fontObj.render("%.2f fps"%minfps, False, (128, 128, 0))
-                #fpsClock.tick(minfps)
+                #fpsText = fontObj.render("%.2f fps"%minfps, False, (128, 128, 0))
+                fpsClock.tick(minfps)
 
 
 if __name__ == '__main__':

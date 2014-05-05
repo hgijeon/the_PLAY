@@ -48,10 +48,17 @@ class View:
         cvrt = (offset[0]+self.absRefVec.lt[0], offset[1]+self.absRefVec.lt[1])
         self.scene.window.blit(tmp, cvrt)
 
+    def drawCharRight(self, string, offset, fontObj, color = (0,0,0)):
+        tmp = fontObj.render(string, True, color)
+        cvrt = (800 - tmp.get_rect()[2] - offset[0], offset[1]+self.absRefVec.lt[1])
+        self.scene.window.blit(tmp, cvrt)
+
     def drawResizeImage(self, image, rect):
         surf = gameapi.transform.smoothscale(image, (int(rect[2]),int(rect[3])))
         cvrt = (rect[0]+self.absRefVec.lt[0], rect[1]+self.absRefVec.lt[1])
         self.scene.window.blit(surf,cvrt)
+
+    
 
     def resizeImage(self, image, wh):
         surf = gameapi.transform.smoothscale(image, (int(wh[0]),int(wh[1])))

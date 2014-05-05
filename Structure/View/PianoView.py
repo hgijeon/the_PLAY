@@ -21,7 +21,8 @@ class PianoView(View):
 
         
     def onDraw(self):
-        self.drawRect(self.white, (0, 50, 800, 300))
+        # self.drawRect(self.white, (0, 50, 800, 300))
+        pass
 
     def setMiddle(self, middle):
         self.middle = middle

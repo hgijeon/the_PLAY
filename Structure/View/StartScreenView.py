@@ -10,6 +10,7 @@ class StartScreenView(View):
         
 
     def onDraw(self):
+        self.fill((0,0,0))
         leftTop = (0,0)
         self.drawImage (self.background, leftTop)
         leftTop = (300,200)

@@ -1,6 +1,7 @@
 from .View import *
 from ..Model.Dot import Dot
 
+import random
 
 threshold = 0.3
 
@@ -10,9 +11,16 @@ class KeyView(View):
         self.pressTime = 0
         self.score = None
         self.prevTime = None
+        self.act = False
 
         height = self.scene.dotEndY - self.scene.dotStartY
         self.barSurface = gameapi.Surface((self.width, height), apiVar.SRCALPHA)
+
+        self.minusScoreColor = (random.randint(192,255),random.randint(64,127),random.randint(64,127),255)
+        self.plusScoreColor = (random.randint(64,127),random.randint(192,255),random.randint(64,127),255)
+        
+        self.downColor = (random.randint(64,127),random.randint(64,127),random.randint(196,255),255)
+        
         
     
     def drawBar(self):
@@ -25,19 +33,23 @@ class KeyView(View):
         if self.keyMiddle.check(self.pitch):
             self.pressTime = time
             if self.score == None:
+                self.downColor = (random.randint(64,127),random.randint(64,127),random.randint(196,255),255)
                 self.score = 0
                 
             if self.act == True:
-                self.score += 1000*(time - self.prevTime)
-                pass
+                self.score += 500*(time - self.prevTime)
             else :
-                self.score -= 500*(time - self.prevTime)
-                pass
+                self.score -= 200*(time - self.prevTime)
+        elif self.act == True:
+            if self.score == None:
+                self.score = 0
+            self.score -= 100*(time - self.prevTime)
         else:
             if self.score != None:
-                self.scene.score += int(self.score)
+                self.scene.score += self.score
                 self.score = None
-            
+        if self.score != None:
+            self.scene.updatingScore += self.score
 
         timediff = time - self.pressTime
         if timediff > threshold:
@@ -60,9 +72,14 @@ class KeyView(View):
                 
                 color = (0,0,128)
                 if dot.info[0] > lineY and dot.info[1] < lineY :
-                    color = (128,0,0)
                     self.act = True
-                    image = self.lineDotImage
+                    if self.keyMiddle.check(self.pitch):
+                        if random.randint(0,1) == 0:
+                            image = self.dotImage
+                        else:
+                            image = self.lineDotImage
+                    else:
+                        image = self.lineDotImage
                 else:
                     image = self.dotImage
 
@@ -75,18 +92,25 @@ class KeyView(View):
                 self.drawRect(color, rect)
                 '''
 
-
-        if self.score != None:
-            self.drawScore()
-
     
 
-    def drawScore(self):
-        self.drawChar(str(int(self.score)), (0,200), self.scene.scoreFont)
+
+        
 
     def updateDots(self):
         self.dotList = self.middle.getData(self.pitch)
 
+
+    def drawScore(self):
+        if self.score != None:
+            if self.score < 0:
+                color = self.minusScoreColor
+                score = -self.score
+            else:
+                color = self.plusScoreColor
+                score = self.score
+            self.drawRect(color, (0, 0, self.width, self.height/200 * (score % 200)))
+        #        self.drawChar(str(int(self.score)), (0,-50), self.scene.scoreFont, (128, 50, 50))
 
 
         
