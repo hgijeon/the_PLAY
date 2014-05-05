@@ -7,16 +7,16 @@ import os
 
 class GameScene(Scene):
     def initModel(self):
-        self.dotStartY = -400
+        self.dotStartY = -300
         self.lineY = 0
-        self.dotEndY = 50
-        self.setDotSpeed(150)
+        self.dotEndY = 150
+        self.setDotSpeed(100)
 
         self.scoreFont = gameapi.font.Font('freesansbold.ttf', 32)
         self.score = 0
 
         self.octWidth = 266
-        self.octHeight = 200
+        self.octHeight = 300
         tmp = gameapi.image.load(os.path.join("Image","1_octive_black.png"))
         self.octaveImg = gameapi.transform.scale(tmp, (self.octWidth, self.octHeight))
 
