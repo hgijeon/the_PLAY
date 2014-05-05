@@ -7,7 +7,7 @@ class GameScreenView(View):
     def onInit(self):
         self.bg = gameapi.Color(0,0,0)
         
-        self.childList.append(PianoView(self.scene, self, (1000, 1000), RefVector(self.scene.octWidth * 1,330)))
+        self.childList.append(PianoView(self.scene, self, (1000, 1000), RefVector(self.scene.octWidth * 1,340)))
         self.childList.append(ScoreView(self.scene, self, (1000, 1000), RefVector(0,0)))
         
         

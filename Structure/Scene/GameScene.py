@@ -16,7 +16,7 @@ class GameScene(Scene):
         self.score = 0
 
         self.octWidth = 266
-        self.octHeight = 270
+        self.octHeight = 260
         tmp = gameapi.image.load(os.path.join("Image","1_octive_black.png"))
         self.octaveImg = gameapi.transform.scale(tmp, (self.octWidth, self.octHeight))
 
