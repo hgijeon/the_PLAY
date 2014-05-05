@@ -26,7 +26,10 @@ class GameScene(Scene):
         self.blackHeight = self.octHeight * 0.68
 
         self.blackDot = gameapi.image.load(os.path.join("Image","black dot.png"))
+        self.lineBlackDot = gameapi.image.load(os.path.join("Image","line black dot.png"))
+
         self.whiteDot = gameapi.image.load(os.path.join("Image","white dot.png"))
+        self.lineWhiteDot = gameapi.image.load(os.path.join("Image","line white dot.png"))
 
         self.playTime = 0
         self.play = True

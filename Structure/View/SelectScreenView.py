@@ -94,7 +94,11 @@ class SelectScreenView(View):
         self.fileSelected = True
 
     def drawIcons(self):
+<<<<<<< HEAD
         leftTop = (50,200)
+=======
+        leftTop = (0,300)
+>>>>>>> f7b33fe0707e39e947d4f4df15194de1e71dfc8f
         self.drawImage (self.icon_unpressed, leftTop)
         leftTop = (300,200)
         self.drawImage (self.icon_unpressed, leftTop)

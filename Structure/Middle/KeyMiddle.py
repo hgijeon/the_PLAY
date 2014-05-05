@@ -46,6 +46,8 @@ class KeyMiddle ():
         '[':81,
         '=':82,
         ']':83,
+        
+        "\\":84,
         }
         self.status = [False] * 128
 
