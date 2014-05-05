@@ -1,5 +1,6 @@
 from .View import *
 import os
+import pygame.midi as midi
 
 class StartScreenView(View):
     def onInit(self):
@@ -15,8 +16,8 @@ class StartScreenView(View):
         self.drawImage (self.start_button, leftTop)
 
 
-    def onUpdateTime(self, time):
-        if self.keyMiddle.check(self.keyMiddle.key["\\"]):
+    def onEvent(self, event):
+        if event.type == apiVar.KEYUP or (event.type == midi.MIDIIN and ((event.status >> 4) & 0xf) == 8):
             self.scene.sceneManager.setSelectScene()
             
     #def buttonPressed(self)
