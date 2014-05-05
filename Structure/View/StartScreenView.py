@@ -5,7 +5,7 @@ import pygame.midi as midi
 class StartScreenView(View):
     def onInit(self):
         self.red = gameapi.Color(255,0,0)
-        self.background = self.resizeImage(gameapi.image.load(os.path.join("Image","piano-photo-1.jpg")), (800,450))
+        self.background = self.resizeImage(gameapi.image.load(os.path.join("Image","piano-photo-1.jpg")), (800,340))
         self.start_button = self.resizeImage(gameapi.image.load(os.path.join("Image","start_game.png")), (200, 200))
         
 
@@ -13,7 +13,7 @@ class StartScreenView(View):
         self.fill((0,0,0))
         leftTop = (0,0)
         self.drawImage (self.background, leftTop)
-        leftTop = (300,200)
+        leftTop = (300,120)
         self.drawImage (self.start_button, leftTop)
 
 
