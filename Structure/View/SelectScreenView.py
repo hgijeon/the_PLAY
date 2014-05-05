@@ -13,15 +13,15 @@ class SelectScreenView(View):
         self.hard_background = self.resizeImage(gameapi.image.load(os.path.join("Image","hard_background.jpg")), (800,600))
         self.icon_pressed = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (200,200))
         self.icon_unpressed = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (200,200))
-        self.title1 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
-        self.title2 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))        
-        self.title3 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
-        self.title4 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
-        self.title5 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
-        self.title6 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
-        self.title7 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
-        self.title8 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
-        self.title9 = self.resizeImage(gameapi.image.load(os.path.join("Image","song_icon.jpg")), (300,300))
+        self.title1 = self.resizeImage(gameapi.image.load(os.path.join("Image","title1.png")), (300,40))
+        self.title2 = self.resizeImage(gameapi.image.load(os.path.join("Image","title2.png")), (300,40))        
+        self.title3 = self.resizeImage(gameapi.image.load(os.path.join("Image","title3.png")), (300,40))
+        self.title4 = self.resizeImage(gameapi.image.load(os.path.join("Image","title1.png")), (300,40))
+        self.title5 = self.resizeImage(gameapi.image.load(os.path.join("Image","title2.png")), (300,40))
+        self.title6 = self.resizeImage(gameapi.image.load(os.path.join("Image","title3.png")), (300,40))
+        self.title7 = self.resizeImage(gameapi.image.load(os.path.join("Image","title7.png")), (300,40))
+        self.title8 = self.resizeImage(gameapi.image.load(os.path.join("Image","title7.png")), (300,40))
+        self.title9 = self.resizeImage(gameapi.image.load(os.path.join("Image","title7.png")), (300,40))
 
         self.mode = 1
         self.icon = 0
@@ -54,15 +54,13 @@ class SelectScreenView(View):
         elif self.keyMiddle.check(self.keyMiddle.key['5']):
             self.mode = 3
         elif self.keyMiddle.check(self.keyMiddle.key['q']):
-            self.icon = 1
-            self.fileopen()            
+            self.icon = 1           
         elif self.keyMiddle.check(self.keyMiddle.key['w']):
             self.icon = 2
-            self.fileopen()            
         elif self.keyMiddle.check(self.keyMiddle.key['e']):
             self.icon = 3
-            self.fileopen()   
-
+        elif self.keyMiddle.check(self.keyMiddle.key['z']):
+            self.icon = 3
         else:
             self.icon = 0
 
@@ -96,35 +94,46 @@ class SelectScreenView(View):
         self.fileSelected = True
 
     def drawIcons(self):
+<<<<<<< HEAD
+        leftTop = (50,200)
+=======
         leftTop = (0,300)
+>>>>>>> f7b33fe0707e39e947d4f4df15194de1e71dfc8f
         self.drawImage (self.icon_unpressed, leftTop)
-        leftTop = (200,300)
+        leftTop = (300,200)
         self.drawImage (self.icon_unpressed, leftTop)
-        leftTop = (400,300)
+        leftTop = (550,200)
         self.drawImage (self.icon_unpressed, leftTop)
         if self.icon == 1:
-            leftTop = (0,300)
+            leftTop = (50, 200)
             self.drawImage (self.icon_pressed, leftTop)
         elif self.icon == 2:
-            leftTop = (200,300)
+            leftTop = (300,200)
             self.drawImage (self.icon_pressed, leftTop)
         elif self.icon == 3:
-            leftTop = (400,300)
+            leftTop = (550,200)
             self.drawImage (self.icon_pressed, leftTop)
 
         if self.mode == 1:
-            leftTop = (0,500)
+            leftTop = (0,400)
             self.drawImage (self.title1, leftTop)
-            leftTop = (0,500)
-            self.drawImage (self.title1, leftTop)
-
+            leftTop = (250,400)
+            self.drawImage (self.title2, leftTop)
+            leftTop = (500,400)
+            self.drawImage (self.title3, leftTop)
         if self.mode == 2:
-            leftTop = (0,500)
-            self.drawImage (self.title1, leftTop)
+            leftTop = (0,400)
+            self.drawImage (self.title4, leftTop)
+            leftTop = (250,400)
+            self.drawImage (self.title5, leftTop)
+            leftTop = (500,400)
+            self.drawImage (self.title6, leftTop)
         if self.mode == 3:
-            leftTop = (0,500)
-            self.drawImage (self.title1, leftTop)
-
-
+            leftTop = (0,400)
+            self.drawImage (self.title7, leftTop)
+            leftTop = (250,400)
+            self.drawImage (self.title8, leftTop)
+            leftTop = (500,400)
+            self.drawImage (self.title9, leftTop)
 
             
