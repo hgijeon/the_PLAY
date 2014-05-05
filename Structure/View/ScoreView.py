@@ -7,8 +7,7 @@ class ScoreView(View):
         
         
     def onDraw(self):
-        self.drawRect(self.bg, (0, 200, 150, 100))
-        self.drawChar(str(self.getScore()), (0,200), self.scene.scoreFont)
+        self.drawCharRight(str(self.getScore()), (100,50), self.scene.scoreFont, (245,161,0))
 
     def getScore(self):
-        return self.scene.score
+        return int(self.scene.score + self.scene.updatingScore)

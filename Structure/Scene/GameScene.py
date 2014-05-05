@@ -12,7 +12,7 @@ class GameScene(Scene):
         self.dotEndY = 150
         self.setDotSpeed(100)
 
-        self.scoreFont = gameapi.font.Font('freesansbold.ttf', 32)
+        self.scoreFont = gameapi.font.SysFont('Comic Sans MS', 100, bold = True)
         self.score = 0
 
         self.octWidth = 266
@@ -33,6 +33,8 @@ class GameScene(Scene):
 
         self.playTime = 0
         self.play = True
+
+        self.updatingScore = 0
 
         self.pianoKeyObserver = []
 
@@ -56,6 +58,8 @@ class GameScene(Scene):
         self.mainView = GameScreenView(self, None, (1000, 1000))
 
     def updateTime(self, time):
+        self.updatingScore = 0
+        
         try:
             if self.play:
                 self.playTime += time - self.prevTime
@@ -65,7 +69,7 @@ class GameScene(Scene):
 
         if self.playTime > self.midiEndTime:
             print("MIDI end")
-            self.sceneManager.setRankingScene(self.filepath, self.score)
+            self.sceneManager.setRankingScene(self.filepath, int(self.score))
 
         super().updateTime(time)
         

@@ -46,9 +46,10 @@ class KeyView(View):
             self.score -= 100*(time - self.prevTime)
         else:
             if self.score != None:
-                self.scene.score += int(self.score)
+                self.scene.score += self.score
                 self.score = None
-            
+        if self.score != None:
+            self.scene.updatingScore += self.score
 
         timediff = time - self.pressTime
         if timediff > threshold:

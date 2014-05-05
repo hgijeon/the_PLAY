@@ -1,5 +1,6 @@
 from .View import *
 from ..Model.Score import HighScore
+import random
 
 import pygame.midi as midi
 import os
@@ -16,17 +17,17 @@ class RankingScreenView(View):
         self.fill((0,0,0))
 
         song = self.scene.getSong()
-        self.drawChar(song.name, (200,40), self.scene.font, (255,0,0))
+        self.drawChar(song.name, (100,20), self.scene.font, (2,175,127))
         rank = self.scene.rank
         for i in range(5):
             if i == rank:
-                color = (255,0,0)
+                color = (random.randint(128,255),random.randint(64,128),random.randint(64,128))
             else:
-                color = (0,255,0)
+                color = (181,211,59)
 
             score = "%20s"%str(song.slotList[i].score)
-            self.drawChar(score, (0, 100 + 50*i), self.scene.font, color)
-            self.drawChar(str(song.slotList[i].name), (400, 100 + 50*i), self.scene.font, color)
+            self.drawChar(score, (0, 90 + 40*i), self.scene.font, color)
+            self.drawChar(str(song.slotList[i].name), (400, 90 + 40*i), self.scene.font, color)
         
         self.drawImage (self.keyHelp, (0,400))
 

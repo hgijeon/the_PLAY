@@ -104,7 +104,7 @@ class the_PLAY:
                 currentScene.event(event)
 
             currentScene.draw()
-            mainWindow.blit(fpsText, fpsText.get_rect())
+            #mainWindow.blit(fpsText, fpsText.get_rect())
             
             
             gameapi.display.flip()
@@ -123,8 +123,8 @@ class the_PLAY:
 
             if mod == 0:
                 minfps = min(frameAccu)*0.9
-                fpsText = fontObj.render("%.2f fps"%minfps, False, (128, 128, 0))
-                #fpsClock.tick(minfps)
+                #fpsText = fontObj.render("%.2f fps"%minfps, False, (128, 128, 0))
+                fpsClock.tick(minfps)
 
 
 if __name__ == '__main__':
