@@ -79,18 +79,18 @@ class SelectScreenView(View):
                 self.scene.filename = "MIDI/Music/Amazing Grace.mid"
         if self.mode == 2:
             if self.icon == 1:
-                self.scene.filename = "MIDI/Music/Amazing Grace.mid"
+                self.scene.filename = "MIDI/Music/moonlight-movement1.mid"
             elif self.icon == 2:
-                self.scene.filename = "MIDI/Music/Happy Birthday.mid"
+                self.scene.filename = "MIDI/Music/wagner-bridal-chorus.mid"
             elif self.icon == 3:
-                self.scene.filename = "MIDI/Music/Twinkle Twinkle Little Star.mid"
+                self.scene.filename = "MIDI/Music/pachelbels-canon-arranged.mid"
         if self.mode == 3:
             if self.icon == 1:
                 self.scene.filename = "MIDI/Music/Minuet.mid"
             elif self.icon == 2:
-                self.scene.filename = "MIDI/Music/Happy Birthday.mid"
+                self.scene.filename = "MIDI/Music/idina_menzel-let_it_go.mid"
             elif self.icon == 3:
-                self.scene.filename = "MIDI/Music/Amazing Grace.mid"
+                self.scene.filename = "MIDI/Music/The-Entertainer.mid"
 
         self.fileSelected = True
 
