@@ -34,6 +34,10 @@ class RankingScene(Scene):
         if self.nameEntered == False:
             self.song.slotList[self.rank].name += ch
 
+    def backspace(self):
+        if len(self.song.slotList[self.rank].name) > 0:
+            self.song.slotList[self.rank].name = self.song.slotList[self.rank].name[:-1]
+
     def done(self):
         self.highScore.saveFile()
         self.rank = 999

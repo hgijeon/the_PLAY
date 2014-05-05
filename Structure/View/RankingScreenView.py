@@ -32,4 +32,8 @@ class RankingScreenView(View):
                     c = chr(ord('a') + pitch - 48)
                     self.scene.addLetter(c)
                 elif pitch == 83:
+                    self.scene.backspace()
+                elif pitch == 84:
                     self.scene.done()
+                else:
+                    self.scene.addLetter(" ")

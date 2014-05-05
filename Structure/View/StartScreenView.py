@@ -16,7 +16,7 @@ class StartScreenView(View):
 
 
     def onUpdateTime(self, time):
-        if self.keyMiddle.check(self.keyMiddle.key[']']):
+        if self.keyMiddle.check(self.keyMiddle.key["\\"]):
             self.scene.sceneManager.setSelectScene()
             
     #def buttonPressed(self)
