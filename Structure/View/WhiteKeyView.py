@@ -17,7 +17,9 @@ class WhiteKeyView(KeyView):
         self.drawDots()
         self.drawRect(self.keyColor, (0, 0, self.width, self.height))
         self.drawBar()
+        self.drawScore()
 
     
     def getDotLeftRight(self):
         return (5, self.width - 10)
+
