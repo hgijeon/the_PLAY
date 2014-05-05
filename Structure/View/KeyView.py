@@ -37,13 +37,13 @@ class KeyView(View):
                 self.score = 0
                 
             if self.act == True:
-                self.score += 100*(time - self.prevTime)
+                self.score += 500*(time - self.prevTime)
             else :
-                self.score -= 50*(time - self.prevTime)
+                self.score -= 200*(time - self.prevTime)
         elif self.act == True:
             if self.score == None:
                 self.score = 0
-            self.score -= 10*(time - self.prevTime)
+            self.score -= 100*(time - self.prevTime)
         else:
             if self.score != None:
                 self.scene.score += int(self.score)
@@ -103,7 +103,7 @@ class KeyView(View):
             else:
                 color = self.plusScoreColor
                 score = self.score
-            self.drawRect(color, (0, 0, self.width, self.height/20 * (score % 20)))
+            self.drawRect(color, (0, 0, self.width, self.height/200 * (score % 200)))
         #        self.drawChar(str(int(self.score)), (0,-50), self.scene.scoreFont, (128, 50, 50))
 
 

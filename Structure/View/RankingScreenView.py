@@ -10,19 +10,20 @@ class RankingScreenView(View):
         
         
     def onDraw(self):            
-        self.fill((200,200,200))
-        self.drawRect(self.blue, (200, 40, 400, 300))
+        self.fill((0,0,0))
 
         song = self.scene.getSong()
-        self.drawChar(song.name, (0,0), self.scene.font, (255,0,0))
+        self.drawChar(song.name, (200,40), self.scene.font, (255,0,0))
         rank = self.scene.rank
         for i in range(5):
             if i == rank:
                 color = (255,0,0)
             else:
                 color = (0,255,0)
-            self.drawChar(str(song.slotList[i].score), (0, 100 + 100*i), self.scene.font, color)
-            self.drawChar(str(song.slotList[i].name), (300, 100 + 100*i), self.scene.font, color)
+
+            score = "%20s"%str(song.slotList[i].score)
+            self.drawChar(score, (0, 100 + 50*i), self.scene.font, color)
+            self.drawChar(str(song.slotList[i].name), (400, 100 + 50*i), self.scene.font, color)
 
     def onEvent(self, event):
         if event.type == apiVar.KEYDOWN or event.type == midi.MIDIIN:

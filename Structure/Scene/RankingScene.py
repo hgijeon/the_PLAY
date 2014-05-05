@@ -7,7 +7,7 @@ rankN = 5
 
 class RankingScene(Scene):
     def initModel(self):
-        self.font = gameapi.font.Font('freesansbold.ttf', 32)        
+        self.font = gameapi.font.SysFont('consolas', 32, True)        
         self.filepath = None
         self.nameEntered = False
         self.doneTime = None
